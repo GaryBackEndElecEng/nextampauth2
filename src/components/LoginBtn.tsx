@@ -8,14 +8,14 @@ export default function Component() {
     return (
       <>
         Signed in as {session?.user?.email} <br />
-        <button onClick={() => signOut()}>Sign out</button>
+        <button className="flex flex-col px-4 py-autu rounded-full border border-blue-600 shadow-md shadow-blue-200" onClick={() => signOut()}>Sign out</button>
       </>
     )
   }
   return (
     <>
       Not signed in <br />
-      <button onClick={() => signIn()}>Sign in</button>
+      <button className="flex flex-col px-4 py-autu rounded-full border border-blue-600 shadow-md shadow-blue-200" onClick={() => signIn()}>Sign in</button>
     </>
   )
 }
