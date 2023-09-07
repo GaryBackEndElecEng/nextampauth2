@@ -64,7 +64,7 @@ export async function hashKey(pswd:string){
     },
     async session({ session, user, token }) {
         // console.log("session",session,token,user) //works
-        console.log(token)
+        // console.log(token)
       return {
         ...session,
         user:{

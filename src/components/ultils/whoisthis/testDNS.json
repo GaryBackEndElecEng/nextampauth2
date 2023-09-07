@@ -1,0 +1,38 @@
+{
+    "message":" this is it",
+    "A": [
+      "62.210.170.59"
+    ],
+    "MX": [
+      {
+        "exchange": "mx2.mail.ovh.net",
+        "priority": 5
+      },
+      {
+        "exchange": "mx1.mail.ovh.net",
+        "priority": 1
+      },
+      {
+        "exchange": "mx3.mail.ovh.net",
+        "priority": 100
+      }
+    ],
+    "NS": [
+      "dns200.anycast.me",
+      "ns200.anycast.me"
+    ],
+    "SOA": {
+      "expire": 3600000,
+      "hostmaster": "tech.ovh.net",
+      "minttl": 300,
+      "nsname": "dns200.anycast.me",
+      "refresh": 86400,
+      "retry": 3600,
+      "serial": 2020061101
+    },
+    "TXT": [
+      "v=spf1 include:mx.ovh.com ~all",
+      "google-site-verification=3VrxP2J3zrFzJPKBy6dU0wI5RdbjvlE46Ud5UdNVu9Q",
+      "1|www.whoisjson.com"
+    ]
+  }

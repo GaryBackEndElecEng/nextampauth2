@@ -1,12 +1,20 @@
-import './globals.css'
-import type { Metadata } from 'next'
-import { Inter,Montserrat,Chela_One } from 'next/font/google';
-import Provider from "@/app/providers";
-import GeneralContextProvider from "@context/GeneralContextProvider";
+import './globals.css';
+import "@nav/nav.css";
+import "@home/home.css";
+import "@ultils/translate/translate.css";
+import { Inter, Montserrat, Chela_One } from 'next/font/google';
+import NewNav from '../components/nav/NewNav';
+import Header from "../components/header/Header";
+import Footer from "../components/footer/Footer";
+import GeneralContextProvider from "@component/context/GeneralContextProvider";
+import Providers from "./providers";
+// import Head from 'next/head';
 
+
+
+//font-family classes-Inter and montserrat Google Fonts
 const inter = Inter({ subsets: ['latin'], weight: ["500"] })
 const montserr = Montserrat({ subsets: ['latin-ext'], weight: ["500"] })
-const chela = Chela_One({ subsets: ['latin-ext'], weight: ["400"] })
 
 export const metadata = {
   metadataBase: new URL("https://www.masterultils.com"),
@@ -109,21 +117,29 @@ export const metadata = {
   // manifest: '/manifest.json',
 }
 
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} h-auto m-0 relative bg-[rgba(255,255,255,0.7)] text-black w-full`}>
-        <Provider>
+
+    <html lang="en" >
+      <body className={`${montserr.className} h-auto m-0 relative bg-[rgba(255,255,255,0.7)] text-black `} style={{ width: "100vw" }}>
+      
+        <Providers>
         <GeneralContextProvider>
+        <NewNav />
+        <Header />
         {children}
         </GeneralContextProvider>
-        </Provider>
-        
+        </Providers>
+        <Footer />
+     
       </body>
+
     </html>
+
   )
 }

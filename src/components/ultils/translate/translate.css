@@ -1,0 +1,28 @@
+*{padding:0;margin:0;box-sizing:border-box;}
+
+
+.translateContainer p.translate{
+    position:relative;
+    height:auto;
+    width:auto;
+    z-index:1;
+    padding:0.5rem;
+    color:transparent;
+    background-image:linear-gradient(blue,green,red);
+    background-clip:text;
+    -webkit-background-clip:text;
+    -webkit-text-stroke:1px black !important;
+    text-shadow:3px 2px black;
+    border:1px solid blue !important;
+    border-radius:3%;
+
+}
+.translateContainer p.translate::before,.translateContainer p.translate::after{
+content:"";
+position:absolute;
+inset:-0.5rem;
+z-index:-1;
+border:1px solid grey;
+border-radius:inherit;
+box-shadow:1px 1px 8px 1px blue,-1px 1px 8px 1px red;
+}

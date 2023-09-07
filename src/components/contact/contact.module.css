@@ -1,0 +1,187 @@
+
+.fontStyleCt{
+    -webkit-background-clip:text;
+    background-clip:text;
+    background-image:var(--background-contact);
+    background-size:50% 50%;
+    -webkit-text-stroke:1px white;
+    color:transparent ;
+    font-size:500%;
+}
+.fontStyleCt2{
+    -webkit-background-clip:text;
+    background-clip:text;
+    background-image:var(--background-contact);
+    background-size:50% 50%;
+    -webkit-text-stroke:1px black;
+    color:transparent ;
+    /* font-size:500%; */
+}
+.childGrid{
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+
+}
+.hello{
+
+    animation:appearIn 2.7s ease-in-out;
+}
+@keyframes appearIn {
+    from {transform:translateX(-100%); opacity:0;}
+    50% { opacity:1;}
+    to {transform:translateX(0%); opacity:1;}
+}
+.childGrid > h1{
+    color:linear-gradient(#e66465, #9198e5);
+
+}
+.childGrid > h2{
+    color:white;
+}
+.childGridForm{
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:center;
+    gap:10px;
+}
+.childGridForm > div{
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:center;
+    gap:10px;
+}
+.childGridForm >form{
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:center;
+    gap:10px;
+    
+    
+}
+.write{
+    opacity:1;
+    background:black;
+    color:white;
+    padding:1rem;
+    transition:all 0.5s ease-in-out;
+}
+.writeHide{
+    opacity:0;
+}
+.write:hover{
+    /* background:black; */
+    font-weight:bold;
+    padding-inline:2rem;
+    transition:all 0.5s ease-in-out;
+}
+.contentInput{
+    display:flex;
+    flex-direction:column;
+    margin:auto;
+    justify-self:center;
+    align-self:center;
+    
+    margin:10px;
+}
+.childGridForm >form> div,.childGridForm >form>label{
+    color:white;
+    /* border:1px solid red; */
+}
+.whatWeDo{
+    animation:showIn 1.5s ease-in-out;
+}
+@keyframes showIn {
+    from {opacity:0;transform:translateY(-50%);}
+    to {opacity:1;transform:translateY(0%);}
+}
+@media screen and (max-width:400px){
+    @keyframes showIn {
+        from {opacity:0;transform:translateX(-50%);}
+        to {opacity:1;transform:translateX(0%);}
+    }
+}
+.hr_line{
+height:3px;
+background-image:var(--background-image-2);
+width:100%;
+margin:3rem auto;
+}
+/* ---------ChatWithUs.js-START---------- */
+.chatWithUsOut{
+    position:relative;
+    justify-content:center;
+    align-items:flex-start;
+}
+.chatWithUsIn{
+    justify-content:center;
+    align-items:center;
+}
+.message{
+    color:white;
+}
+/* -------ANCHOR START------- */
+
+@keyframes showUp {
+    from {transform:translate(0px,0px);opacity:0;}
+    to {transform:translate(20%,-160%);opacity:1;}
+}
+@keyframes email {
+    from {transform:translate(0px,0px);opacity:0;}
+    to {transform:translate(20%,-180%);opacity:1;}
+}
+/* -------ANCHOR END------- */
+.contactMsg{
+    position:absolute;
+    top:0%;
+    justify-content:flex-start;
+    align-items:center;
+    background-color:rgba(0,0,0,0.8);
+    z-index:2000;
+    padding:1rem;
+    height:auto;
+}
+.mainGrid{
+
+}
+.contactMsg >h1{
+    color:white;
+}
+.message{
+    margin:auto;
+    margin:1rem auto;
+    margin-left:1rem;
+}
+.message >h1{
+
+    color:white;
+    margin:1rem auto;
+}
+.Button {
+    color:black;
+    background-color:white;
+    transition:all 0.4s ease-in-out;
+}
+.Button:hover{
+    color:white;
+    background-color:black;
+    transition:all 0.4s ease-in-out;
+}
+/* ---------ChatWithUs.js-END---------- */
+/* ---------BioBanner-END---------- */
+.gridChild > div >div{
+    margin:auto !important;
+}
+.gridChild >div> div > h2,.gridChild >div> div > h3{
+    margin:1rem auto !important;
+    color:white;
+   
+}
+
+/* ---------BioBanner.js-END---------- */

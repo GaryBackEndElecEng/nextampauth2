@@ -1,0 +1,42 @@
+
+
+
+.masterHeader{
+    width:100vw;
+    height:40vh;
+    background-position:50% 50%;
+    background-size:100% 100%;
+    margin-bottom:0rem;
+    border-radius:0%;
+    position:relative;
+}
+.masterHeader h2{
+   animation: moveIn 10s ease-in-out infinite;
+   animation-delay:2s;
+}
+
+@keyframes moveIn {
+    from { transform:translate(0%,0%) scale(1);}
+    25% { transform:translate(0%,5%) scale(1.05);}
+    50% { transform:translate(-5%,0%) scale(1.1);}
+    75% { transform:translate(0%,-5%) scale(1.05);}
+    to { transform:translate(0%,0%) scale(1);}
+}
+@media screen and (max-width:920px){
+    .masterHeader{
+        width:100vw;
+        height:60vh;
+        background-position:44% 20%;
+        background-size:140% 150%;
+        margin-bottom:-6rem;
+        border-radius:0%;
+        position:relative;
+        transform:translateY(-14%);
+    }
+}
+@media screen and (max-width:400px){
+    .masterHeader{
+        margin-bottom:-6.5rem;
+        transform:translateY(-26%);
+    }
+}

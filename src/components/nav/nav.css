@@ -1,0 +1,199 @@
+/*
+    nav.mainNav => 
+    main.subMainNav =>
+    mainLinkgroup => 
+    subNavLinkgroup > div ( elements ) 
+    */
+
+@property --angle-rotate{
+    syntax:"<angle>";
+    inherits:false;
+    initial-value:0deg;
+    }
+main.subMainNav{
+    margin-inline:5px;
+    margin-right:20px;
+}
+    section.combineButtons_hidelarge{
+        display:none;
+    }  
+  
+
+
+/* ------------ MEDIA SCREEN 920px-------------*/
+
+@media screen and (max-width:920px){
+/* top nav */
+
+nav.mainNav{
+    /* display:block; */
+    background:transparent;
+    position:sticky;
+    z-index:200;
+    /* background:hsla(137, 91%, 50%, 0.3) */
+}
+
+/* house all links */
+
+main.subMainNav{
+display:flex;
+flex-direction:column;
+align-items:flex-start;
+justify-content:flex-start;
+position:relative;
+margin-inline:auto;
+margin-right:auto;
+}
+main.subMainNav > section.logoContainer{
+    width:100%;
+    margin:auto;
+    position:relative;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    
+}
+section.combineButtons{
+    display:none;
+}
+section.combineButtons_hidelarge{
+    display:block;
+    position:absolute;
+    top:5px;
+    right:5px;
+}
+
+main.subMainNav>section.mainLinkgroup{
+    position:absolute;
+    opacity:0;
+    left:0;
+    top:90px;
+    z-index:100;
+    transform:translateX(-100%);
+    transition: all 0.75s ease-in-out;
+}
+main.subMainNav:hover >section.mainLinkgroup{
+    opacity:1;
+    transform:translateX(20%);
+    transition: all 0.75s ease-in-out;
+}
+main.subMainNav >section{
+    flex-basis:none;
+    margin:0;
+    width:30%;
+    
+}
+div.hideCombosmall{
+    display:none;
+}
+div.combineButtons{
+position:absolute;
+right:5px;
+top:15px;
+}
+
+@keyframes rotate {
+    from {
+        --angle-rotate:0deg;
+        background: conic-gradient(
+        from --angle-rotate,
+        #74B3CE, 0deg,
+        #508991, 10deg,
+        #172A3A, 60deg,
+        #004346, 90deg,
+        #09BC8A
+    );
+    opacity:0.5;
+    }
+    to {
+        --angle-rotate:360deg;
+        background: conic-gradient(
+        #74B3CE,
+        #508991, 200deg,
+        #172A3A, 260deg,
+        #004346, 320deg,
+        #09BC8A
+    );
+    opacity:1;
+    }
+}
+/*------ LOGO ------*/
+section.logoContainer > .image{
+    width:75px;
+    border-radius:50%;
+    opacity:0.75;
+    height:75px;
+    transition:all 0.75s ease-in-out;
+}
+main.subMainNav:hover > section.logoContainer > .image{
+    width:85px;
+     border-radius:50%;
+     opacity:1;
+    background-color:white;
+    transition:all 0.75s ease-in-out;
+}
+section.mainLinkgroup{
+    position:absolute;
+    opacity:0;
+    left:0;
+    top:90px;
+    z-index:200;
+    transform:translateX(-100%);
+    transition: all 0.75s ease-in-out;
+
+}
+div.subNavLinkgroup{
+    display:block;
+    box-shadow:1px 1px 10px 2px #508991;
+    width:fit-content;
+    transform:translate(-20%);
+    
+}
+div.subNavLinkgroup >ul{
+    box-shadow:1px 1px 10px 2px #508991;
+    margin:5px auto;
+    background-color:#508991;
+}
+div.subNavLinkgroup >ul{
+    box-shadow:1px 1px 10px 2px #508991;
+    margin:5px auto;
+    background-color:#508991;
+}
+ section ul.subNavLinks >ul{
+    display:block;
+    position:relative;
+    opacity:1;
+}
+div.navLinkgroup{
+box-shadow:1px 1px 10px 2px white;
+width:100%;
+
+}
+main section ul.subNavLinks{
+    transform:translateX(20%);  
+}
+ul.navLink,div.subNavLinkgroup ul > h3{
+    color:white;
+    width:fit-content;
+}
+
+
+}
+/* ------------ MEDIA SCREEN 920px-------------*/
+
+/* --- MEDIA SCREEN 400px----*/
+@media screen and (max-width:400px){
+    nav.mainNav{
+        max-height:100px;
+        z-index:1;
+    }
+    
+    div.subNavLinkgroup{
+        display:block;
+        box-shadow:1px 1px 10px 2px #508991;
+        width:fit-content;
+        transform:translate(-35%);
+        
+    }
+    
+}

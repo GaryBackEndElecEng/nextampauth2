@@ -1,0 +1,11 @@
+*{padding:0;box-sizing:border-box;margin:0;}
+
+
+div.card >p.webDesign{
+    font-size:220%;
+    transition: all 0.75s ease-in-out;
+}
+div.card:hover >p.webDesign{
+    font-size:226%;
+    transition: all 0.75s ease-in-out;
+}

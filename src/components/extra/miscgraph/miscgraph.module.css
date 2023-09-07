@@ -1,0 +1,17 @@
+.countryTitle{
+    text-align:center;
+    text-decoration:underline;
+}
+
+.showTopten{
+    display:block;
+}
+.hideTopten{
+    display:block;
+}
+
+@media screen and (max-width:920px){
+    .showTopten{
+        display:none;
+    }
+}

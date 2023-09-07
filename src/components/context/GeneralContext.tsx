@@ -5,7 +5,7 @@ import {icons} from "./Icons";
 import type {allCategoryType,catWordSnippet,categoryType,categoryGeneralInfo,imageCategory,whyChoosUsType,articleType,articlesType,countryType,navImageLinkType} from "@context/Types";
 import {allNavLinks} from "./navList";
 import countriesArr from "@context/country.json";
-// import { seriesType, barType, xaxisType, lineStrokeType, graphType_type, legendType,barDataLabelType,BarLabelTotalType } from '@/components/extra/apexChart/types';
+import { seriesType, barType, xaxisType, lineStrokeType, graphType_type, legendType,barDataLabelType,BarLabelTotalType } from '@/components/extra/apexChart/types';
 
 // const staticImage=process.env.NEXT_PUBLIC_static;
 // const masterImage=process.env.NEXT_PUBLIC_aws;
@@ -192,15 +192,20 @@ export const CountryContextProvider = (props:any) => {
 }
 //------------APEXCHARTS-------------------------//
 type mainGeneralApexChartType={
-    // setGroupSeries: React.Dispatch<React.SetStateAction<[] | seriesType[]>>,
-    // groupSeries:[] | seriesType[],
-    // setSerie: React.Dispatch<React.SetStateAction<string | null>>,
-    // serie: string | null,
-    // setXAxis:React.Dispatch<React.SetStateAction<xaxisType | null>>,
-    // xaxis: xaxisType | null,
-    // setXaxisInput: React.Dispatch<React.SetStateAction<string | null>>,
-    // xaxisInput: string | null,
-   
+    setGroupSeries: React.Dispatch<React.SetStateAction<[] | seriesType[]>>,
+    groupSeries:[] | seriesType[],
+    setSerie: React.Dispatch<React.SetStateAction<string | null>>,
+    serie: string | null,
+    setXAxis:React.Dispatch<React.SetStateAction<xaxisType | null>>,
+    xaxis: xaxisType | null,
+    setXaxisInput: React.Dispatch<React.SetStateAction<string | null>>,
+    xaxisInput: string | null,
+    setLegend: React.Dispatch<React.SetStateAction<legendType | undefined>>,
+    legend: legendType | undefined,
+    setBar: React.Dispatch<React.SetStateAction<barType | undefined>>,
+    Bar: barType | undefined,
+    setLineStroke: React.Dispatch<React.SetStateAction<lineStrokeType | undefined>>,
+    lineStroke: lineStrokeType | undefined,
     setMsgX: React.Dispatch<React.SetStateAction<string | null>>,
     msgX: string | null,
     setMsg_S: React.Dispatch<React.SetStateAction<string | null>>,
@@ -213,22 +218,31 @@ type mainGeneralApexChartType={
     refresh: boolean,
     setShow: React.Dispatch<React.SetStateAction<boolean>>,
     show: boolean,
-   
+    setGraphType: React.Dispatch<React.SetStateAction<graphType_type>>,
+    graphType: graphType_type,
+    setBarlabels: React.Dispatch<React.SetStateAction<barDataLabelType | undefined>>,
+    barlabels:barDataLabelType | undefined,
   }
   export const GeneralApexChart=React.createContext<mainGeneralApexChartType>({} as mainGeneralApexChartType);
   
   export const GeneralApexChartProvider=(props:any)=>{
-      
+      const [groupSeries, setGroupSeries] = React.useState<seriesType[] | []>([]);
+      const [serie, setSerie] = React.useState<string | null>(null);
+      const [xaxis, setXAxis] = React.useState<xaxisType | null>(null);
+      const [xaxisInput, setXaxisInput] = React.useState<string | null>(null);
+      const [legend, setLegend] = React.useState<legendType>();
+      const [Bar, setBar] = React.useState<barType | undefined>()
+      const [lineStroke, setLineStroke] = React.useState<lineStrokeType | undefined>()
       const [msgX, setMsgX] = React.useState<string | null>(null);
       const [msg_S, setMsg_S] = React.useState<string | null>(null);
       const [nameS, setNameS] = React.useState<string | null>(null);
       const [addSeriesCount, setAddSeriesCount] = React.useState<number[]>([1]);
       const [refresh, setRefresh] = React.useState<boolean>(false);
       const [show, setShow] = React.useState<boolean>(false);
-      // const [graphType, setGraphType] = React.useState<graphType_type>();
-      // const [barlabels, setBarlabels] = React.useState<barDataLabelType | undefined>();
+      const [graphType, setGraphType] = React.useState<graphType_type>();
+      const [barlabels, setBarlabels] = React.useState<barDataLabelType | undefined>();
     return (
-      <GeneralApexChart.Provider value={{show,setShow,refresh, setRefresh,addSeriesCount, setAddSeriesCount,nameS, setNameS,msg_S, setMsg_S,msgX, setMsgX,}}>
+      <GeneralApexChart.Provider value={{show,setShow,graphType, setGraphType,refresh, setRefresh,addSeriesCount, setAddSeriesCount,nameS, setNameS,msg_S, setMsg_S,msgX, setMsgX,lineStroke, setLineStroke,Bar, setBar,legend, setLegend,xaxisInput, setXaxisInput,xaxis, setXAxis,serie, setSerie,groupSeries, setGroupSeries,setBarlabels,barlabels}}>
           {props.children}
       </GeneralApexChart.Provider>
     )

@@ -1,0 +1,23 @@
+[
+    {
+        "id": 2,
+        "name": "Gary Wallace",
+        "address": "21 Rue St-Jean",
+        "cell": "416-917-5768",
+        "country": "CA",
+        "provState": "ON",
+        "city": "Chateauguay",
+        "postal": "L4C-1K8",
+        "extra": "Business hours: mon-Fri, 9-6pm",
+        "siteArray": [
+            "fb:: https://www.facebook.com/people/Master-Connect/100077971323770/",
+            "linkedin:: https://www.linkedin.com/in/gary-wallace-501513229/",
+            "masterconnect:: https://www.masterconnect.ca",
+            "master-connect.ca:: https://www.master-connect.ca",
+            ".com:: https://www.master-connect.com",
+            "email::masterconnect919@gmail.com",
+            "github:: https://github.com/GaryBackEndElecEng",
+            "instagram::https://www.instagram.com/garysjwallacedeveloper/?next=%2F"
+        ]
+    }
+]
