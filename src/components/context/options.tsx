@@ -41,9 +41,9 @@ export async function hashKey(pswd:string){
   callbacks: {
     async signIn({ user, account, profile, email, credentials, }) {
         //activate only after the signin is successful
-         if(credentials || account?.userId){
+         if(credentials){
           return true
-        }
+        }else if(account) return true
         return false
       
     },
