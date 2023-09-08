@@ -23,17 +23,31 @@ const UserPosts = ({getUserAccount}:userPostsType) => {
   const getUserId =(account && account.loaded && account.data) ? account.data.id : null;
 
   React.useEffect(()=>{
+    if(getUserAccount){
     setAccount(getUserAccount);
     setUsersPosts(allPosts.filter(post=>(post.userId===getUserId)));
+    setMsg2({loaded:true,msg:"your posts to edit/create"});
+    }else{
+      setMsg2({loaded:false,msg:"you are not logged into your account"});
+    }
   },[getUserAccount,setUsersPosts,setAccount,getUserId,allPosts]);
 
     const handleReturn=(e:React.MouseEvent)=>{
       e.preventDefault();
-      router.push("/dashboard");
+      router.push("/posts");
     };
 
   return (
     <div className="mx-0 lg:mx-auto lg:container flex flex-col items-center w-full ">
+      {msg2.loaded ?
+        <div className="flex flex-col  items-center justify-center px-10 py-2">
+          <h3 className="text text-blue">{msg2.msg}</h3>
+        </div>
+      :
+      <div className="flex flex-col  items-center justify-center px-10 py-2">
+        <h3 className="text text-red">{msg2.msg}</h3>
+      </div>
+      }
       <div className="flex flex-col my-3 mx-auto items-center">
              
                 <button className="px-3 py-1 shadow shadow-blue-600 rounded-md" onClick={(e)=>handleReturn(e)}>

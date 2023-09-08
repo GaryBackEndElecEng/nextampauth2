@@ -10,6 +10,12 @@ import { ArrowFunction,FunctionDeclaration } from 'typescript';
 type mainRegisterType={
     genHash:(pswd:string)=>Promise<string>
 }
+function textPswd(pswd:string):boolean {
+    const pswdTest=/(?=^.{5,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/g;
+    if(pswdTest.test(pswd)) return true
+    return false
+
+}
 
 const Register = ({genHash}:mainRegisterType) => {
     const url=httpUrl();
@@ -21,23 +27,25 @@ const Register = ({genHash}:mainRegisterType) => {
     const [msg, setMsg] = React.useState<msgType | null>(null);
     const [showPass,setShowPass]=React.useState<boolean>(false);
     const [pswd,setPswd]=React.useState<string>("");
-    const pswdTest=/(?=^.{5,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/g
     const changePasswd=()=>{
         setShowPass(true);
         setTimeout(()=>{setShowPass(false)},2000);
     }
     
-    React.useMemo(async()=>{
-        if(pswdTest.test(pswd)){
+
+    React.useMemo(async ()=>{
+        if(textPswd(pswd)){
             let tempPswd: string | null=await genHash(pswd);
             if(tempPswd){
-                setData({...data,password:tempPswd,emailVerified:new Date()});
-                }
-                setMsg({loaded:true,msg:"Thank you for joining"})
+            setData({...data,password:tempPswd,emailVerified:new Date()});
+            setMsg({loaded:true,msg:"Thank you for joining"})
+            }
         }else{
             setMsg({loaded:false,msg:"password is at least 5 letters long with one uppercase and one !,^,?,,special character"})
         }
-    },[pswd,setData,setMsg,genHash]);
+    },[pswd]);
+
+    
     
 
     const registerUser = (e: React.FormEvent<HTMLFormElement>) => {
@@ -90,7 +98,7 @@ const Register = ({genHash}:mainRegisterType) => {
     return (
         <div>
             <div className="flex flex-col  w-full  justify-center w-sm py-12 lg:px-8 border border-black rounded-lg bg-lime_green">
-                <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+                <div className="sm:mx-auto px-8 sm:max-w-sm">
                     <Image width={125} height={125} src={logo} alt="www" className="mx-auto h-10 w-auto" />
                     <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-grey-900">Register</h2>
                     <h3 className="mt-5 text-center text-xl font-bold leading-9 tracking-tight text-grey-900">Thank you for being with us</h3>
@@ -112,7 +120,7 @@ const Register = ({genHash}:mainRegisterType) => {
                             <div className="mt-2  flex flex-col justify-center my-2 rounded-lg">
                                 <input type="text" className="mt-2 shadow shadow-blue bg-white text-black"
                                     name="name"
-                                    value={data ? data.name : ""}
+                                    value={data && data.name ? data.name : ""}
                                     onChange={(e) => setData({ ...data, name: e.target.value })}
                                     required
                                     
@@ -122,7 +130,7 @@ const Register = ({genHash}:mainRegisterType) => {
                             <div className="mt-2 mt-2   my-2 rounded-lg flex flex-col justify-center">
                                 <input type="text" className="mt-2 shadow shadow-blue bg-white text-black"
                                     name="email"
-                                    value={data ? data.email : ""}
+                                    value={data && data.email ? data.email : ""}
                                     onChange={(e) => setData({ ...data, email: e.target.value })}
                                     required
                                     

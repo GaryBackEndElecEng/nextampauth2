@@ -48,16 +48,16 @@ export async function hashKey(pswd:string){
       
     },
     async redirect({ url, baseUrl }) {
+      
         // Allows relative callback URLs in the middleware(match)
-        if (url.startsWith("/"))
+       
+         if (url.startsWith("/register"))
         { 
-          return `${url}`
+          return baseUrl
+        }else if (url.startsWith("/")){
+          return url
         }
-        // Allows callback URLs on the same origin
-        if (new URL(url).origin === baseUrl)
-        {
-           return url
-        }
+        
         return baseUrl
             
         

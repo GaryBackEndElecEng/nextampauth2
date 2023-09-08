@@ -65,10 +65,10 @@ export type imgUserType={
 }
 export type registerType={
     id?:string,
-    name?:string,
-    email?:string,
+    name:string,
+    email:string,
     emailVerified?:Date,
-    password?:string,
+    password:string | null,
 }
 export type testPosts={
   posts:PostDataType[],

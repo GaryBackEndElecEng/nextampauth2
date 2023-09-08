@@ -62,7 +62,8 @@ const GeneralContextProvider = (props:any) => {
       }
     },[]);
 
-    React.useMemo(async()=>{
+    React.useEffect(()=>{
+      const fetchUserInfo=async()=>{
       try {
         const res=await fetch(`/api/posts/usersinfo`);
         if(res.ok){
@@ -73,6 +74,8 @@ const GeneralContextProvider = (props:any) => {
       } catch (error) {
         
       }
+    }
+    fetchUserInfo()
     },[]);
     
   return (
