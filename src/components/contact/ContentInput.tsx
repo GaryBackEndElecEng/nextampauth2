@@ -42,14 +42,17 @@ const ContentInput = ({setContent,cell,formData,sent,content}:contentType) => {
     <FormControl size="medium" variant="filled"  style={{margin:"0.5rem auto",}}
     className="bg-white text-black dark:bg-white dark:text-black my-2 p-2 rounded-lg"
     >
-      <h3
+      <label
         className="bg-white text-blue dark:bg-white dark:text-blue font-bold my-2 p-2 rounded-lg"
+        htmlFor={"content"}
       >
         Message
-      </h3>
+      </label>
       <TextareaAutosize
         aria-label="maximum height"
         minRows={4}
+        id="content"
+        name={"content"}
         value={tempContent}
         onChange={(e) => setTempContent(e.target.value)}
         required={true}

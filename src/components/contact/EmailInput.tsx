@@ -46,6 +46,7 @@ const EmailInput = ({setEmail,formData,sent}:EmailInputType) => {
       </InputLabel>
       <Input
         name="email"
+        id="email"
         placeholder="email please"
         value={tempEmail}
         onChange={(e) => setTempEmail(e.target.value)}
