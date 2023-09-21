@@ -5,7 +5,7 @@ let prisma: PrismaClient
 
 if (process.env.NODE_ENV === "production") {
   prisma = new PrismaClient({
-    datasourceUrl:process.env.DATABASE_URL_heroku
+    datasourceUrl: process.env.DATABASE_URL_AWS
   })
 } else {
   let globalWithPrisma = global as typeof globalThis & {
@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === "production") {
   }
   if (!globalWithPrisma.prisma) {
     globalWithPrisma.prisma = new PrismaClient({
-      datasourceUrl:process.env.DATABASE_URL_local
+      datasourceUrl: process.env.DATABASE_URL_AWS
     })
   }
   prisma = globalWithPrisma.prisma

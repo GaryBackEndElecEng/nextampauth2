@@ -87,7 +87,7 @@ const DisplayPage = ({ usersPosts, setUsersPosts, userId }: mainDisplayType) => 
             setPublish(false);
             setAllPosts([...allPosts, body])
         }
-        if (postData && postData.title && userId && picSubmit) {
+        if (postData && postData.title && userId) {
             postContent();
         }
     }

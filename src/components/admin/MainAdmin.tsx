@@ -40,7 +40,7 @@ const MainAdmin = ({ session }: mainAdminType) => {
         </button>
       </div>
       <h2 className="text-md text-center text-blue-600 font-bold">count:{allUsers.length}</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 my-2 p-3 gap-3 place-items-center place-content-center mt-6">
+      <div className="grid grid-cols-3 my-2 p-3 gap-3 place-items-center place-content-center mt-6">
         {users.map((user, index) => (
           <div className="col-span-1 mx-auto flex flex-col items-center justify-center shadow-md rounded-lg shadow-blue-500 py-9 px-3 w-full relative" key={`${index}-user`}>
             <div className="absolute -top-5 right-0">
@@ -53,7 +53,7 @@ const MainAdmin = ({ session }: mainAdminType) => {
             <h2 className="text-lg m-0 py-2">{user.name}</h2>
             <h2 className="text-lg m-0 py-2">{user.email}</h2>
             <h3 className="text-lg text-center font-bold">posts</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-auto mt-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2  mx-auto mt-4">
 
               {user.posts && user.posts.map((post, index) => (
                 <div key={`${index}-${post.id}`} className={"flex flex-col items-center col-span-1"}>
