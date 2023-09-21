@@ -144,11 +144,12 @@ export type DataType ={
     
   }[]
 export type PostDataType ={
-    id: number;
-    title: string ;
-    content: string;
-    published?: boolean;
-    userId: number;
+    id: number,
+    title: string ,
+    content: string,
+    published?: boolean,
+    image?:string,
+    userId: number,
     
   }
 export type loginType={

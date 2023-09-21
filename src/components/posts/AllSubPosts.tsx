@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import type { DataType,PostDataType, addCommentType, userType, answerType } from "@component/context/type";
+import type { DataType, PostDataType, addCommentType, userType, answerType } from "@component/context/type";
 import Image from "next/image";
 import type { imageCategory } from "@component/context/Types";
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
@@ -25,34 +25,34 @@ type mainDisplayType = {
 
     userId: string | null,
     chela: string,
-   
+
 
 }
 const AllSubPosts = ({ userId, chela }: mainDisplayType) => {
     const { extraImages } = React.useContext(GeneralContextNoAcc);
-    const { userInfos,allPosts } = React.useContext(GeneralContext);
+    const { userInfos, allPosts } = React.useContext(GeneralContext);
     const router = useRouter();
     const [addComment, setAddComment] = React.useState<addCommentType>({ loaded: false, postId: null });
     const [saved, setSaved] = React.useState<boolean>(false);
-  
 
-    const userInfo=React.useCallback((id:string)=>{
-        if(userInfos){
-            const userAttr=userInfos.find(user=>(user.id===id));
-            if(userAttr){
+
+    const userInfo = React.useCallback((id: string) => {
+        if (userInfos) {
+            const userAttr = userInfos.find(user => (user.id === id));
+            if (userAttr) {
                 return (
                     <div className="flex flex-row items-center justify-center gap-2">
                         <p className="my-2 mx-auto text-lg text-orange">{userAttr.name.split(" ")[0]}</p>
                         {(userAttr.image && userAttr.name) &&
-                        <Image src={userAttr.image} alt={userAttr.name} width={55} height={55}
-                        className="rounded-[50%] shadow shadow-blue"
-                        />
+                            <Image src={userAttr.image} alt={userAttr.name} width={55} height={55}
+                                className="rounded-[50%] shadow shadow-blue"
+                            />
                         }
                     </div>
                 )
-            }else{ return <></>}
+            } else { return <></> }
         }
-    },[userInfos]);
+    }, [userInfos]);
 
     React.useEffect(() => {
         if (saved) {
@@ -79,17 +79,17 @@ const AllSubPosts = ({ userId, chela }: mainDisplayType) => {
             router.push("/dashboard");
         }
     }
-    const handleAddComment = (e: React.MouseEvent, id: number) => {
+    const handleAddComment = (e: React.MouseEvent, id: number | null) => {
         e.preventDefault();
         setSaved(false);
-        if (!(addComment.loaded && addComment.postId == id)) {
+        if (!(addComment.loaded && id && addComment.postId == id)) {
             setAddComment({ loaded: true, postId: id });
 
         } else {
             setAddComment({ loaded: false, postId: null })
         }
     }
-    
+
 
 
 
@@ -100,55 +100,60 @@ const AllSubPosts = ({ userId, chela }: mainDisplayType) => {
 
             <div className="m-auto p-2 gap-1 md:gap-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                 {(allPosts) && allPosts.map((post, index) => (
-                <div key={`${post.id}-${index}-`} >
-                    {getPic() && <Image src={getPic() as string} alt="www.masterconnect.ca" width={65} height={65} className="rounded-[50%] shadow-md shadow-blue p-2 aspect-[1/1]" blurDataURL={getPic() as string} />}
-                    <div className={`flex flex-row flex-wrap mx-auto items-center  ${userId && post.userId === userId ? " cursor-pointer" : ""}`} onClick={(e) => routeToDashboard(e, post.userId)}>
-                    
-                        <div className={`${userId === post.userId ? "text-blue-500 text-underline" : " text-black"} mx-auto p-3 text-2xl shadow-md rounded-md shadow-blue-500`} >
-                        {userInfo(post.userId)}
-                            {post.title}
-                            </div>
-                        {
-                            post.userId === userId &&
-                            <IconButton  >
-                                <ManageAccountsIcon sx={{ m: 3, background: "bleu", color: "red", fontSize: "120%" }} /><span className="underline underline-offset-8 text-red">
-                                    {userInfo(post.userId)}
-                                    </span>
-                            </IconButton>
-                        }
-                    </div>
+                    <div key={`${post.id}-${index}-`}
+                        className="flex flex-col items-center"
+                    >
+                        {getPic() && <Image src={getPic() as string} alt="www.masterconnect.ca" width={65} height={65} className="rounded-[50%] shadow-md shadow-blue p-2 aspect-[1/1]" blurDataURL={getPic() as string} />}
+                        <div className={`flex flex-row flex-wrap mx-auto items-center  ${userId && post.userId === userId ? " cursor-pointer" : ""}`} onClick={(e) => routeToDashboard(e, post.userId)}>
 
-                    <div className="lg:mx-auto py-3 mx-0 text-green" >published:{post.published ? "true" : "false"}</div>
-                    <div className="mx-auto p-3 text-xl inline-flex" >
-                        <SourceIcon sx={{ color: "red", ml: 2, mr: 2 }} />
-                        content:
-                    </div>
-                    <div className="mx-0 p-1 text-xl" >{post.content}</div>
-                    
-                    <h4 className="text-sm text-center">Date</h4>
-                    <div className="text-center my-2 text-md">
-                        {post.date && convertDate(post.date)}
-                    </div>
-                    <Comments
-                        post={post}
-                        userInfo={userInfo}
-                    />
-                    {(addComment.loaded && addComment.postId === post.id && !saved) &&
-                        <PostAnswer
-                            chela={chela}
-                            postId={post.id}
-                            userId={userId}
-                            setSaved={setSaved}
-                        />}
-                    <div className="flex flex-col items-center justify-center my-2">
-                        {userId && <button className="px-3 py-1 text-md rounded-md shadow shadow-blue" onClick={(e) => handleAddComment(e, post.id)}>
-                            {(addComment.postId !== post.id) ? <span className="text-site_mint"> add a thought</span>
-                                :
-                                <span className="text-orange"> close</span>
+                            <div className={`${userId === post.userId ? "text-blue-500 text-underline" : " text-black"} mx-auto p-3 text-2xl shadow-md rounded-md shadow-blue-500`} >
+                                {userInfo(post.userId)}
+                                {post.title}
+                            </div>
+                            {
+                                post.userId === userId &&
+                                <IconButton  >
+                                    <ManageAccountsIcon sx={{ m: 3, background: "bleu", color: "red", fontSize: "120%" }} /><span className="underline underline-offset-8 text-red">
+                                        {userInfo(post.userId)}
+                                    </span>
+                                </IconButton>
                             }
-                        </button>}
+                        </div>
+                        {post.imageKey &&
+                            <Image src={post.imageKey} alt="www.masterconnect.ca" height={300} width={300} className="aspect-video" />
+                        }
+                        <div className="lg:mx-auto py-3 mx-0 text-green" >published:{post.published ? "true" : "false"}</div>
+                        <div className="mx-auto p-3 text-xl inline-flex" >
+                            <SourceIcon sx={{ color: "red", ml: 2, mr: 2 }} />
+                            content:
+                        </div>
+                        <div className="mx-0 p-1 text-xl" >{post.content}</div>
+
+                        <h4 className="text-sm text-center">Date</h4>
+                        <div className="text-center my-2 text-md">
+                            {post.date && convertDate(post.date)}
+                        </div>
+                        <Comments
+                            post={post}
+                            userInfo={userInfo}
+                        />
+                        {(addComment.loaded && addComment.postId === post.id && !saved) &&
+                            <PostAnswer
+
+                                chela={chela}
+                                postId={post.id}
+                                userId={userId}
+                                setSaved={setSaved}
+                            />}
+                        <div className="flex flex-col items-center justify-center my-2">
+                            {userId && <button className="px-3 py-1 text-md rounded-md shadow shadow-blue" onClick={(e) => handleAddComment(e, post.id)}>
+                                {(addComment.postId !== post.id) ? <span className="text-site_mint"> add a thought</span>
+                                    :
+                                    <span className="text-orange"> close</span>
+                                }
+                            </button>}
+                        </div>
                     </div>
-                </div>
                 ))}
 
             </div>
