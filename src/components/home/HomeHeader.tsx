@@ -1,13 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
 
+
 const HomeHeader = () => {
     const URL = process.env.NEXT_PUBLIC_aws;
     const happy = `${URL}/happy.png`;
     const logo = `${URL}/logoLarge.png`;
 
     return (
-        <div className=" homeHeader my-0 mx-0  lg:mx-auto text-black dark:text-white bg-[whitesmoke] dark:bg-black pb-4">
+        <div className=" homeHeader my-0 mx-0  lg:mx-auto text-black dark:text-white bg-[whitesmoke] dark:bg-black pb-4 relative">
 
             <p className="free text-6xl text-center mx-auto whitespace-normal mt-2 py-2">Free Resources,  from:
             </p>
