@@ -1,7 +1,6 @@
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
-export { default } from "next-auth/middleware";//This protects the entire app
 
+
+export { default } from "next-auth/middleware";//This
 export const config = {
     matcher: [
         "/dashboard",
@@ -10,4 +9,6 @@ export const config = {
         "/ultils/currency/:path*"
     ]
 }
+
+
 

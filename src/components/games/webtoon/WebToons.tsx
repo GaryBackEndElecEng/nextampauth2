@@ -1,17 +1,23 @@
 "use client"
-import React, {MouseEvent} from 'react';
+import React, { MouseEvent } from 'react';
 import MainApi from './MainApi';
 import { Grid, Container } from "@mui/material";
 import Image from "next/image";
+import { GeneralContext } from '@/components/context/GeneralContextProvider';
 
 function openPage(link: string): void {
   window.open(link)
 }
 
 const WebToons = () => {
-  const URL =process.env.NEXT_PUBLIC_aws;
+  const { setPage } = React.useContext(GeneralContext);
+  const URL = process.env.NEXT_PUBLIC_aws;
   const webtoon1 = `${URL}/webtoon1.png`;
   const webtoon2 = `${URL}/webtoon2.png`;
+
+  React.useEffect(() => {
+    setPage("/webtoon")
+  }, [setPage]);
 
   const handleLink = (e: MouseEvent<HTMLButtonElement> | undefined, link: string) => {
     e?.preventDefault();
@@ -42,7 +48,7 @@ const WebToons = () => {
           <Grid item xs={12} md={3} className="relative flexCol relative  overflow-hidden">
             <Image src={webtoon2} alt="www.masterconnect.ca" height={450} width={450}
               className="absolute inset-0 aspect-video w-full"
-              
+
             />
             <div className="m-auto flex flex-col items-center justify-center font-bold bg-[rgba(255,255,255,0.6)] z-20 text-black">
               <h3 className="text-xl text-center mx-auto my-2">WebToons</h3>

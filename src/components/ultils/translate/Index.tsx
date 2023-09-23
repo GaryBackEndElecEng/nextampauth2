@@ -4,7 +4,7 @@ import Translate from "./Translate";
 import Form from './Form';
 import { Grid, Container } from "@mui/material";
 import "./translate.css"
-// import {Input,FormControl,InputLabel} from "@mui/material";
+import { GeneralContext } from '@/components/context/GeneralContextProvider';
 type formType = {
     loaded: boolean,
     data: {
@@ -22,9 +22,14 @@ type listType = {
 const Index = () => {
     const [show, setShow] = React.useState<boolean>(false);
     const [getWidth, setGetWidth] = React.useState<number>(1400);
+    const { setPage } = React.useContext(GeneralContext)
     const is_900: boolean = getWidth < 920 ? true : false;
     const vertHorz: {} | undefined = is_900 ? { writingMode: "" } : { writingMode: "vertical-lr" };
     const decoStyle: string = is_900 ? "flex flex-col justify-center items-center" : "flex flex-row justify-center items-center gap-2";
+
+    React.useEffect(() => {
+        setPage("/translate")
+    }, [setPage]);
 
     React.useEffect(() => {
         if (window.innerWidth) {
@@ -74,7 +79,7 @@ const Index = () => {
             </div>
 
 
-            
+
             <Grid container spacing={{ xs: 3, sm: 2 }} className=" justify-center items-center p-2">
                 <Grid item xs={12} md={2}>
                     <div className={decoStyle}>

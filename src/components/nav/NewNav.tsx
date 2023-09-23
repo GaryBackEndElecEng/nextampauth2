@@ -4,6 +4,11 @@ import React, { MouseEvent } from 'react';
 // import { GeneralContextNoAcc } from "@/components/context/GeneralContext";
 import { useRouter } from "next/navigation";
 import { CombineButtons } from "@component/ultilities";
+import SignUp from "@component/emails/SignUp";
+import styles from "@component/header/header.module.css";
+import { GeneralContext } from '../context/GeneralContextProvider';
+import ListIcon from '@mui/icons-material/List';
+import { IconButton } from "@mui/material";
 
 
 
@@ -51,6 +56,7 @@ export const navLinkHome: navType = [
 
 const NewNav = () => {
     const router = useRouter();
+    const { setSignup } = React.useContext(GeneralContext);
     const URL = process.env.NEXT_PUBLIC_aws;
     const logo: string = `${URL}/logo.png`;
     const design = "https://www.masterconnect.ca/designs";
@@ -73,13 +79,19 @@ const NewNav = () => {
     }
 
     return (
+
+
         <nav className="mainNav top-0 left-0 right-0 lg:bg-blue lg:w-full min-h-[100px] relative ">
+
 
             <main className="subMainNav  lg:flex  lg:flex-row lg:justify-around lg:items-center lg:gap-10 relative ">
                 <section className="logoContainer  m-auto relative rounded-full lg:basis-1/5 ">
                     <Image src={logo} alt="www.masterconnect.ca" height={75} width={75}
-                        className="image lg:p-1"
+                        className="image lg:p-1 hidden lg:block"
                     />
+                    <IconButton className="block lg:hidden" >
+                        <ListIcon sx={{ color: "white", font: "bold", fontSize: { sm: "150%", md: "200%" } }} />
+                    </IconButton>
 
 
                 </section>
@@ -100,11 +112,18 @@ const NewNav = () => {
                         <div className=" text-center cursor-pointer shadow shadow-white px-3 hover:shadow-lg hover:shadow-white my-2 " onClick={(e) => handleLink(e, contact?.link)}>
                             <h3 className="text-white font-bold sm:text-xl">contact</h3>
                         </div>
+                        <div className="relative ">
+                            <button className=" shadow shadow-orange border border-orange rounded-full px-3  bg-orange text-white" onClick={() => setSignup(true)}>signup</button>
+
+                        </div>
 
 
                     </div>
 
+
+
                 </section>
+
                 <section className="combineButtons" >
                     <CombineButtons />
                 </section>
@@ -113,6 +132,7 @@ const NewNav = () => {
                 <CombineButtons />
             </section>
         </nav>
+
     )
 }
 

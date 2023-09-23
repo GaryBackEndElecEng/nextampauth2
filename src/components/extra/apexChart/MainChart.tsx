@@ -1,25 +1,26 @@
 "use client";
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 // import Chart from 'react-apexcharts';
-import {seriesType,xaxisType} from './types';
+import { seriesType, xaxisType } from './types';
 import dynamic from 'next/dynamic';
-const Chart =dynamic(()=>import("react-apexcharts"),{ssr:false});
+const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-type optionType= {
-    chart: {
-      id: string
-    },
-    xaxis:xaxisType
-  }
-  type stateType={
-    options:optionType,
-    series:seriesType[]
-  }
-  
 
-export class MainChart extends Component<{},stateType> {
+type optionType = {
+  chart: {
+    id: string
+  },
+  xaxis: xaxisType
+}
+type stateType = {
+  options: optionType,
+  series: seriesType[]
+}
 
-  constructor(props:any) {
+
+export class MainChart extends Component<{}, stateType> {
+
+  constructor(props: any) {
     super(props);
 
     this.state = {
@@ -37,14 +38,14 @@ export class MainChart extends Component<{},stateType> {
       }]
     }
   }
-  
+
   render() {
-    
+
     return (
-       
+
       <Chart options={this.state.options} series={this.state.series} type="bar" width={500} height={320} />
-      
+
     )
-    
+
   }
 }

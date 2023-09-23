@@ -85,3 +85,10 @@ model Signup {
   email String?  @unique
   date  DateTime @default(now()) @db.Date
 }
+
+model PageHit {
+  id    Int      @id @default(autoincrement())
+  page  String?  @unique
+  count Int?
+  date  DateTime @default(now()) @db.Date
+}

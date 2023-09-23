@@ -24,6 +24,33 @@ const generateHTML = (name: string, email: string) => {
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>You've signed up</title>
+            <style>
+                body{
+                    border-radius:10px;
+                    box-shadow:1px 1px 5px 20px grey,-1px -1px -5px 20px grey;
+                }
+                h4{
+                    color:blue;
+                }
+                h1{ font:"bold";text-decoration:underline;text-underline-offset: 3;}
+                .masterultils{
+                    background:whitesmoke;
+                    margin-block:20px;
+                    padding-block:20px;
+                    border-radius:10%;
+                    width:50%;
+                    text-align:left;
+                    box-shadow:1px 1px 20px 2px grey,-1px -1px 20px 2px grey;
+                }
+                p{margin-block:10px}
+                .list{
+                    margin-block:20px;
+                    background:white;
+                    border-radius:10px;
+                    padding:7px;
+                    box-shadow:1px 1px 5px 20px grey,-1px -1px -5px 20px grey;
+                }
+            </style>
         </head>
         <body>
             <h1>Community member</h1>
@@ -33,9 +60,15 @@ const generateHTML = (name: string, email: string) => {
             <p>We will email as soon as new services become available to your email @: ${email}</p>
             <br>
             <br>
-            <br>
-            <br>
-            <div class="background-whitesmoke text-align-center flex-col items-center gap-2">
+            <h4> additional interesting things you might like</h4>
+            <ul class="list">
+                <li><a href="https://www.masterultils.com/articles">articles</a></li>
+                <li><a href="https://www.masterultils.com/contact">Contact Us</a></li>
+                <li><a href="https://www.masterultils.com/register">register</a></li>
+                <li><a href="https://www.masterconnect.ca/design">Our Designs</a></li>
+            </ul>
+            
+            <div class="masterultils text-align-center flex-col items-center gap-2">
             <a href="www.masterconncet.ca">master connect</a>
             <p>email: masterultils@gmail.com</p>
                 <img src="https://new-master.s3.ca-central-1.amazonaws.com/static/masterultils/logo.png" alt="www.masterconnect.ca"

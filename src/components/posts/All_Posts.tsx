@@ -12,6 +12,7 @@ import Image from "next/image";
 import { Inter, Montserrat, Chela_One } from 'next/font/google';
 import httpUrl from "@component/context/httpUrl";
 
+
 const chela = Chela_One({ weight: "400", subsets: ["latin"] });
 
 type mainAllpostsType = {
@@ -23,7 +24,11 @@ type mainAllpostsType = {
 
 const All_Posts = ({ imgSrc, getAccount }: mainAllpostsType) => {
     const url = httpUrl();
-    const { setIsSignin, session, genMsg, setGenMsg, msg, setMsg, userId, setUserId, setAccount, allPosts, } = React.useContext(GeneralContext);
+    const { setIsSignin, session, genMsg, setGenMsg, msg, setMsg, userId, setUserId, setAccount, allPosts, setPage } = React.useContext(GeneralContext);
+
+    React.useEffect(() => {
+        setPage("/posts")
+    }, [setPage]);
 
     React.useMemo(() => {
 

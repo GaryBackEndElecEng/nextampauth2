@@ -11,24 +11,6 @@
   animation: moveIn 10s ease-in-out infinite;
   animation-delay: 2s;
 }
-.show {
-  display: block;
-  opacity: 1;
-}
-.hide {
-  opacity: 0;
-  animation: moveOut 1.5s ease-out;
-}
-@keyframes moveOut {
-  from {
-    transform: translateX(0%);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-}
 
 @keyframes moveIn {
   from {
@@ -63,5 +45,79 @@
   .masterHeader {
     margin-bottom: -6.5rem;
     transform: translateY(-26%);
+  }
+}
+/* -----SIGNUP------------- */
+.show {
+  display: block;
+  opacity: 1;
+}
+.hide {
+  opacity: 0;
+  animation: moveOut 1.5s ease-out;
+}
+.signUp {
+  display: block;
+  opacity: 1;
+  position: absolute;
+  right: 12.5%;
+  top: 17%;
+}
+@media screen and (max-width: 920px) {
+  .signUp {
+    position: absolute;
+    left: 33%;
+    top: 14%;
+    width: 300px;
+  }
+  .hide {
+    opacity: 0;
+    left: 33%;
+    top: 14%;
+    animation: moveOut 1.5s ease-out;
+  }
+  @keyframes moveOut {
+    from {
+      transform: translateX(33%);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(133%);
+      opacity: 0;
+    }
+  }
+}
+@media screen and (max-width: 450px) {
+  .signUp {
+    position: absolute;
+    left: 22%;
+    top: 30%;
+    width: 200px;
+  }
+  .hide {
+    opacity: 0;
+    left: 22%;
+    top: 30%;
+    animation: moveOut 1.5s ease-out;
+  }
+  @keyframes moveOut {
+    from {
+      transform: translateX(22%);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(122%);
+      opacity: 0;
+    }
+  }
+}
+@keyframes moveOut {
+  from {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
   }
 }

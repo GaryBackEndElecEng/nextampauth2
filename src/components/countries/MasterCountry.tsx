@@ -2,8 +2,10 @@
 import React, { MouseEvent } from 'react';
 import classNames, { Countries } from "world-countries";
 import Link from 'next/link';
-import SVGElement,{SVGImage,RegularSVG} from "./SVGElement";
-import {FormControl,Input,FormHelperText} from "@mui/material";
+import SVGElement, { SVGImage, RegularSVG } from "./SVGElement";
+import { FormControl, Input, FormHelperText } from "@mui/material";
+import { GeneralContext } from '../context/GeneralContextProvider';
+
 
 // import Router from 'next/router';
 
@@ -12,25 +14,28 @@ import {FormControl,Input,FormHelperText} from "@mui/material";
 
 const MasterCountry = () => {
     const [countries, setCountries] = React.useState<Countries | null>(null);
-    const [search,setSearch]=React.useState<string >("");
+    const [search, setSearch] = React.useState<string | undefined>("");
+    const { setPage } = React.useContext(GeneralContext);
 
-    React.useEffect(()=>{
-        if(window.scrollY){
-            window.scroll(0,0);
+    React.useEffect(() => { setPage("/countries") }, [setPage]);
+
+    React.useEffect(() => {
+        if (window.scrollY) {
+            window.scroll(0, 0);
         }
-    },[]);
-    
+    }, []);
+
     React.useEffect(() => {
         if (!countries) {
             setCountries(classNames);
         }
-    }, [search,countries]);
+    }, [search, countries]);
 
     React.useMemo(() => {
         if (countries && search) {
-            const searchCountry=countries.filter((obj,index)=>(obj.name.common.toLowerCase().includes(search?.toLowerCase())));
+            const searchCountry = countries.filter((obj, index) => (obj.name.common.toLowerCase().includes(search?.toLowerCase())));
             setCountries(searchCountry);
-        }else{
+        } else {
             setCountries(classNames);
         }
     }, [search]);
@@ -41,12 +46,12 @@ const MasterCountry = () => {
             <div className="flex flex-col items-center justify-center">
                 <h3 className="text-center text-2xl my-2 text-black dark:text-white">Search a country</h3>
                 <FormControl className="text-black bg-white dark:text-black m-auto dark:bg-white shadow-lg dark:shadow-white shadow-blue rounded-lg">
-            <Input
-            name={"search"}
-            value={search ? search : ""}
-            onChange={(e)=>setSearch(e.target.value)}
-            className="text-black"
-            />
+                    <Input
+                        name={"search"}
+                        value={search ? search : ""}
+                        onChange={(e) => setSearch(e.target.value)}
+                        className="text-black"
+                    />
                 </FormControl>
                 <FormHelperText className="dark:text-white text-black text-xl my-2">find a country</FormHelperText>
             </div>
@@ -57,15 +62,15 @@ const MasterCountry = () => {
                             <h3 className="text-xl text-center my-2">Find a country</h3>
                             <h3 className="text-3xl text-center my-2 font-bold"> {country.name.official}</h3>
                             <div className="w-[300] m-auto  relative">
-                            <RegularSVG name={country.cca3} title={country.name.common}/>
+                                <RegularSVG name={country.cca3} title={country.name.common} />
                             </div>
                             <h3 className="text-lg text-center">region: {country.region}</h3>
                             <h3 className="text-lg text-center">subregion: {country.subregion}</h3>
                             <div className="flex flex-col m-auto items-center justify-center rounded-lg px-3 p-1 my-2 border shadow-md shadow-site_blue_grey hover:shadow-blue hover:tracking-widest"
-                            
+
                             >
                                 <Link href={`/ultils/countries/detail?name=${country.name.official.toLowerCase()}`}>
-                                <h4 className="text-lg m-auto">details</h4>
+                                    <h4 className="text-lg m-auto">details</h4>
                                 </Link>
                             </div>
                         </div>

@@ -7,6 +7,7 @@ import location from './Location';
 import GetCity from './GetCity';
 import Image from "next/image";
 import MainWeather from './MainWeather'
+import { GeneralContext } from '../../context/GeneralContextProvider';
 
 
 type locationType = {
@@ -21,9 +22,15 @@ type sendType = {
     coord: string | null
 }
 const Index = () => {
-    const URL =process.env.NEXT_PUBLIC_aws;
+    const { setPage } = React.useContext(GeneralContext);
+    const URL = process.env.NEXT_PUBLIC_aws;
     const summer = `${URL}/summer.png`;
     const winter = `${URL}/winter.png`;
+
+    React.useEffect(() => {
+        setPage("/weather")
+    }, [setPage]);
+
     return (
         <div className="grid grid-cols-1 lg:grid-cols-4 place-items-center gap-4 lg:gap-1 mx-0 bg-[rgba(255,255,255,0.7)] text-black dark:bg-black dark:text-white">
             <div className="col-span-1 my-0 mt-0 min-h-[50vh]  shadow-big-2 rounded-xl w-full flex flex-col items-start justify-center" style={{ backgroundImage: `url(${summer})`, backgroundSize: "100% 100%", backgroundPosition: "50% 50%" }}>

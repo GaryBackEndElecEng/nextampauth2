@@ -88,7 +88,7 @@ const Register = ({ genHash }: mainRegisterType) => {
             setData({ id: "", name: "", email: "", password: "" })
             router.push("/api/auth/signin");
         }
-        if (data.name && data.email && data.password) {
+        if (data.name && data.email && data.password && !showPass) {
             sendRegister();
 
         }
@@ -115,40 +115,42 @@ const Register = ({ genHash }: mainRegisterType) => {
                 }
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                     <form onSubmit={(e) => registerUser(e)} className="w-full flex flex-col items-center  p-3 rounded-lg bg-slate_blue text-white shadow-md shadow-slate_blue" >
-                        <div>
-                            <label htmlFor="name" className="block text-sm font-medium leading-6">name</label>
-                            <div className="mt-2  flex flex-col justify-center my-2 rounded-lg">
-                                <input type="text" className="mt-2 shadow shadow-blue bg-white text-black"
-                                    name="name"
-                                    value={data && data.name ? data.name : ""}
-                                    onChange={(e) => setData({ ...data, name: e.target.value })}
-                                    required
 
-                                />
-                            </div>
-                            <label htmlFor="name" className="block text-sm font-medium leading-6">email</label>
-                            <div className="mt-2 mt-2   my-2 rounded-lg flex flex-col justify-center">
-                                <input type="text" className="mt-2 shadow shadow-blue bg-white text-black"
-                                    name="email"
-                                    value={data && data.email ? data.email : ""}
-                                    onChange={(e) => setData({ ...data, email: e.target.value })}
-                                    required
+                        <label htmlFor="name" className="block text-sm font-medium leading-6">name</label>
 
-                                />
-                            </div>
-                            <label htmlFor="name" className="block text-sm font-medium leading-6">password</label>
-                            <div className="mt-2 mt-2   my-2 rounded-lg flex flex-col justify-center">
-                                <input className="mt-2 shadow shadow-blue bg-white text-black"
-                                    name="password"
-                                    type={showPass ? "text" : "password"}
-                                    value={pswd}
-                                    required
-                                    onChange={(e) => setPswd(e.target.value)}
+                        <input type="text" className="mt-2 shadow shadow-blue bg-white text-black rounded-lg"
+                            name="name"
+                            id="name"
+                            value={data && data.name ? data.name : ""}
+                            onChange={(e) => setData({ ...data, name: e.target.value })}
+                            required
 
-                                />
-                                <button className="text-center text-white bg-blue shadow-md shadow-blue rounded-md hover:text-leading-3" onClick={changePasswd}>show password</button>
-                            </div>
-                        </div>
+                        />
+
+                        <label htmlFor="email" className="block text-sm font-medium leading-6">email</label>
+
+                        <input type="text" className="mt-2 shadow shadow-blue bg-white text-black rounded-lg"
+                            name="email"
+                            id="email"
+                            value={data && data.email ? data.email : ""}
+                            onChange={(e) => setData({ ...data, email: e.target.value })}
+                            required
+
+                        />
+
+                        <label htmlFor="password" className="block text-sm font-medium leading-6">password</label>
+
+                        <input className="mt-2 shadow shadow-blue bg-white text-black rounded-lg"
+                            name="password"
+                            type={showPass ? "text" : "password"}
+                            value={pswd}
+                            required
+                            onChange={(e) => setPswd(e.target.value)}
+
+                        />
+                        <button className="text-center text-white bg-blue shadow-md shadow-blue rounded-md hover:text-leading-3 my-3" onClick={changePasswd}>show pswd</button>
+
+
                         <div className="flex flex-col items-center">
                             <button type="submit" className="flex flex-col w-full justify-center rounded-md bg-indigo-600 px-4 py-1 5 text-sm font-bold text-center shadow-md shadow-white">submit</button>
                         </div>

@@ -7,6 +7,7 @@ import { redirect } from 'next/navigation';
 import Link from "next/link";
 
 
+
 const Dashboard = async () => {
 
   const getUserAccount: userAccountType = await getAccount() as userAccountType;

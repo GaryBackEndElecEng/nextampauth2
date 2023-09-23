@@ -8,7 +8,9 @@ export const metadata: Metadata = metaposts;
 const logo = `${process.env.NEXT_PUBLIC_aws_static}/logo.png`
 import type { PostDataType } from "@component/context/type";
 
+
 export default async function Posts() {
+
   const check = await isAdmin();
   const imgSrc = await getImg();
   const getAllPosts: PostDataType[] | null = await getAllposts();

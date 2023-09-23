@@ -6,38 +6,40 @@ import Image from "next/image";
 import HomeAnchor from "./HomeAnchor";
 import ViewArticCont from './ViewArticCont';
 import { GeneralProviderNoAccount } from "@context/GeneralContext";
-import {GeneralContext} from "@context/GeneralContextProvider";
+import { GeneralContext } from "@context/GeneralContextProvider";
 import AllNavFeed from './AllNavFeed';
 import HomeHeader from './HomeHeader';
-import type {userInfoType,PostDataType} from "@context/type";
+import type { userInfoType, PostDataType } from "@context/type";
 
-type mainHomeType={
-    getusersInfo:userInfoType[] | null
+
+type mainHomeType = {
+    getusersInfo: userInfoType[] | null
 }
 
 const HomeBodyNew = () => {
-const {setAllPosts}=React.useContext(GeneralContext);
+    const { setAllPosts, setPage, pageInfo } = React.useContext(GeneralContext);
 
-
-
+    React.useEffect(() => {
+        setPage("/home")
+    }, [setPage]);
 
     React.useEffect(() => {
         if (window.scrollY) {
             window.scroll(0, 0);
         }
     }, []);
-    
+
 
     return (
         <div>
             <GeneralProviderNoAccount>
                 {/* <ThemeProvider attribute="class"> */}
-                    <HomeHeader />
-                    <ViewArticCont />
-                    <main className="lg:container lg:mx-auto my-1 dark:bg-black dark:text-white text-black bg-[rgba(255,255,255,0.6)]">
+                <HomeHeader />
+                <ViewArticCont />
+                <main className="lg:container lg:mx-auto my-1 dark:bg-black dark:text-white text-black bg-[rgba(255,255,255,0.6)]">
                     <AllNavFeed />
-                    </main>
-                    
+                </main>
+
                 {/* </ThemeProvider> */}
             </GeneralProviderNoAccount>
         </div>

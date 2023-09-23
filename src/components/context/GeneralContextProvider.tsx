@@ -32,7 +32,12 @@ type generalContextType = {
   setAllAnswers: React.Dispatch<React.SetStateAction<answerType[]>>,
   allAnswers: answerType[],
   setSignUpEmail: React.Dispatch<React.SetStateAction<{ email: string | undefined, name: string | undefined }>>,
-  signUpEmail: { email: string | undefined, name: string | undefined }
+  signUpEmail: { email: string | undefined, name: string | undefined },
+  setSignup: React.Dispatch<React.SetStateAction<boolean>>,
+  signup: boolean,
+  setPage: React.Dispatch<React.SetStateAction<string | undefined>>,
+  page: string | undefined,
+  pageInfo: string | undefined,
 }
 export const GeneralContext = React.createContext<generalContextType>({} as generalContextType);
 
@@ -50,7 +55,10 @@ const GeneralContextProvider = (props: any) => {
   const [userId, setUserId] = React.useState<string | null>(null);
   const [isCsrf, setIsCsrf] = React.useState<boolean>(false);
   const [userInfos, setUserInfos] = React.useState<userInfoType[] | null>(null);
-  const [signUpEmail, setSignUpEmail] = React.useState<{ email: string | undefined, name: string | undefined }>({ name: "", email: "" })
+  const [signUpEmail, setSignUpEmail] = React.useState<{ email: string | undefined, name: string | undefined }>({ name: "", email: "" });
+  const [signup, setSignup] = React.useState<boolean>(false);
+  const [page, setPage] = React.useState<string | undefined>("");
+  const [pageInfo, setPageInfo] = React.useState<string | undefined>("")
 
   React.useMemo(async () => {
     try {
@@ -80,9 +88,31 @@ const GeneralContextProvider = (props: any) => {
     }
     fetchUserInfo()
   }, []);
+  React.useEffect(() => {
+    const recordHit = async () => {
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "*/*"
+        }, body: JSON.stringify(page)
+      }
+      const res = await fetch(`/api/page-hit`, options);
+      if (!res.ok) {
+        console.log(await res.json());
+        const body: { message: string } = await res.json()
+        setPageInfo(body.message)
+      }
+      const body: { message: string } = await res.json()
+      setPageInfo(body.message)
+    }
+    if (page) {
+      recordHit();
+    }
+  }, [page]);
 
   return (
-    <GeneralContext.Provider value={{ account, setAccount, allPosts, setAllPosts, signin, setSignin, isSignin, setIsSignin, session, status, msg, setMsg, users, setUsers, allUsers, setAllUsers, genMsg, setGenMsg, userId, setUserId, allAnswers, setAllAnswers, userInfos, setUserInfos, signUpEmail, setSignUpEmail }}>
+    <GeneralContext.Provider value={{ account, setAccount, allPosts, setAllPosts, signin, setSignin, isSignin, setIsSignin, session, status, msg, setMsg, users, setUsers, allUsers, setAllUsers, genMsg, setGenMsg, userId, setUserId, allAnswers, setAllAnswers, userInfos, setUserInfos, signUpEmail, setSignUpEmail, signup, setSignup, setPage, page, pageInfo }}>
       {props.children}
     </GeneralContext.Provider>
   )
