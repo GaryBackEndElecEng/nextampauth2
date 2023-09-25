@@ -4,7 +4,7 @@ import type { DataType, PostDataType, addCommentType, userType, answerType } fro
 import Image from "next/image";
 import type { imageCategory } from "@component/context/Types";
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
-import { IconButton } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 import CommentIcon from '@mui/icons-material/Comment';
 import SourceIcon from '@mui/icons-material/Source';
 import { useRouter } from "next/navigation";
@@ -110,6 +110,13 @@ const AllSubPosts = ({ userId, chela }: mainDisplayType) => {
                                 {userInfo(post.userId)}
                                 {post.title}
                             </div>
+                            <button className="px-3 bg-blue m-3 border border-orange shadow shadow-blue rounded-full"
+                                onClick={() => {
+                                    router.push(
+                                        `/posts/id?id=${post.id}`
+                                    )
+                                }}
+                            >Detail</button>
                             {
                                 post.userId === userId &&
                                 <IconButton  >

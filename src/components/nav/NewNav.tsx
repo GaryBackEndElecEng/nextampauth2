@@ -88,10 +88,13 @@ const NewNav = () => {
 
             <main className="subMainNav  lg:flex  lg:flex-row lg:justify-around lg:items-center lg:gap-10 relative ">
                 <section className="logoContainer  m-auto relative rounded-full lg:basis-1/5 ">
-                    <Image src={logo} alt="www.masterconnect.ca" height={75} width={75}
-                        className="image lg:p-1 hidden lg:block"
-                    />
-                    <IconButton className="block lg:hidden" >
+                    <IconButton sx={{ display: { xs: "none", md: "block" } }}>
+                        <Image src={logo} alt="www.masterconnect.ca" height={75} width={75}
+                        />
+                    </IconButton>
+                    <IconButton
+                        sx={{ display: { xs: "block", md: "none" } }}
+                    >
                         <ListIcon sx={{ color: "white", font: "bold", fontSize: { sm: "150%", md: "200%" } }} />
                     </IconButton>
 
