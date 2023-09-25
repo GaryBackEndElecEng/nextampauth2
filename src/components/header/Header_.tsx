@@ -1,14 +1,15 @@
 "use client";
 import React from 'react';
 import styles from "./header.module.css";
-// import {ThemeProvider} from 'next-themes';
+import { ThemeContext } from "@component/context/ThemeContext";
 import ColorBtn from './ColorBtn';
 import SignUp from "@component/emails/SignUp";
 import { GeneralContext } from '../context/GeneralContextProvider';
 
 
 
-const Header = () => {
+const Header_ = () => {
+  const { setTheme } = React.useContext(ThemeContext);
   const URL = process.env.NEXT_PUBLIC_aws;
   const [close, setClose] = React.useState<boolean>(false);
   const [hide, setHide] = React.useState<boolean>(false);
@@ -16,6 +17,7 @@ const Header = () => {
   const { signup } = React.useContext(GeneralContext);
   // const headerImage:string=`${URL}/header.png`;
   const headerImage: string = `${URL}/bg_navada.png`;
+
 
   return (
     // <ThemeProvider attribute="class">
@@ -44,7 +46,7 @@ const Header = () => {
         </div>
 
       }
-      <div className="grid  place-items-center absolute top-[84%] left-[10%] md:top-[50%] lg:top-13  md:left-[15%] lg:left-[10%] z-[0] w-3/4">
+      <div className="grid  place-items-center absolute top-[84%] left-[10%] md:top-[70%] lg:top-1  md:left-[30%] lg:left-[35%] z-[0] w-[300px]">
         <div>
           <h4 className={`text-center text-white m-auto sm:text-md md:text-3xl  `}>Thank you for visiting Us!</h4>
           <h3 className="animate-pulse text-sm sm:text-xl text-white mt-1 lg:mt-10 p-2 bg-[rgba(0,0,0,0.6)]">masterconnect.ca @ masterultils.ca</h3>
@@ -57,4 +59,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default Header_

@@ -248,7 +248,7 @@ const DisplayPage = ({ usersPosts, setUsersPosts, userId }: mainDisplayType) => 
                         </div>
                     }
                 </form>
-                <div className={(!picSubmit && openImgBox) ? "absolute top-[30%] left-[10%] lg:left-[36%] sm:left-[33%]" : "hidden"}>
+                <div className={(!picSubmit && openImgBox) ? "absolute inset-0  w-3/4 mx-auto container" : "hidden"}>
                     <UpLoadS3
                         postData={postData}
                         setPostData={setPostData}
@@ -259,7 +259,7 @@ const DisplayPage = ({ usersPosts, setUsersPosts, userId }: mainDisplayType) => 
                         setUploading={setUploading}
                         uploading={uploading}
                         setPicSubmit={setPicSubmit}
-                        picName={picName}
+                        userId={getUserId}
                     />
                 </div>
             </div>

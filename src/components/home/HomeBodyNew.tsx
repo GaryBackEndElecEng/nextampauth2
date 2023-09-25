@@ -10,6 +10,7 @@ import { GeneralContext } from "@context/GeneralContextProvider";
 import AllNavFeed from './AllNavFeed';
 import HomeHeader from './HomeHeader';
 import type { userInfoType, PostDataType } from "@context/type";
+import { ThemeContext } from "@context/ThemeContext";
 
 
 type mainHomeType = {
@@ -18,6 +19,7 @@ type mainHomeType = {
 
 const HomeBodyNew = () => {
     const { setAllPosts, setPage, pageInfo } = React.useContext(GeneralContext);
+    const { theme } = React.useContext(ThemeContext);
 
     React.useEffect(() => {
         setPage("/home")
@@ -31,7 +33,7 @@ const HomeBodyNew = () => {
 
 
     return (
-        <div>
+        <div className={theme}>
             <GeneralProviderNoAccount>
                 {/* <ThemeProvider attribute="class"> */}
                 <HomeHeader />

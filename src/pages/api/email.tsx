@@ -38,7 +38,8 @@ const generateHTML = (name: string, email: string) => {
                     margin-block:20px;
                     padding-block:20px;
                     border-radius:10%;
-                    width:50%;
+                    width:30%;
+                    padding:2rem;
                     text-align:left;
                     box-shadow:1px 1px 20px 2px grey,-1px -1px 20px 2px grey;
                 }
@@ -49,6 +50,11 @@ const generateHTML = (name: string, email: string) => {
                     border-radius:10px;
                     padding:7px;
                     box-shadow:1px 1px 5px 20px grey,-1px -1px -5px 20px grey;
+                }
+                img{
+                    border-radius:50%;
+                    padding:1rem;
+                    box-shadow: 2px 2px 10px 2px black,-2px -2px 10px 2px black;
                 }
             </style>
         </head>
@@ -72,6 +78,7 @@ const generateHTML = (name: string, email: string) => {
             <a href="www.masterconncet.ca">master connect</a>
             <p>email: masterultils@gmail.com</p>
                 <img src="https://new-master.s3.ca-central-1.amazonaws.com/static/masterultils/logo.png" alt="www.masterconnect.ca"
+                
                 />
             </div>
         </body>

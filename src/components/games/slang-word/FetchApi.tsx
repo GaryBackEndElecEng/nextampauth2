@@ -47,7 +47,7 @@ const FetchApi = () => {
 
     return (
 
-        <div className="lg:container lg:mx-auto  lg:p-1 flex flex-col items-center justify-center dark:bg-black dark:text-white bg-white text-black ">
+        <div className="lg:container lg:mx-auto  lg:p-1 flex flex-col items-center justify-center dark:bg-black dark:text-white bg-white text-black mx-0 px-0 ">
             <h3 className="text-center text-xl p-2 my-2 font-bold">find a definition to a slang word</h3>
             <Form
                 phrase={phrase}
@@ -58,7 +58,7 @@ const FetchApi = () => {
             <GetAPI phrase={phrase} setMsg={setMsg} />
             <div className="mx-auto my-3">
                 <Fab variant="extended" color="primary" onClick={(e) => handleReset(e)}
-                    className="px-5 bg-black text-white hover:text-black hover:bg-blue hover:tracking-wider"
+                    className="px-5 bg-black text-white hover:text-black hover:bg-blue hover:tracking-wider dark:bg-white dark:text-black"
                 >
                     reset
                 </Fab>

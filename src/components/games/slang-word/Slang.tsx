@@ -2,23 +2,20 @@
 import React from 'react';
 // import {ThemeProvider} from 'next-themes';
 import FetchApi from './FetchApi';
-import {Container} from "@mui/material";
+import { Container } from "@mui/material";
+import { ThemeContext } from '@/components/context/ThemeContext';
 
-
-
-
-export const sound_clip="this_is_a_very_long_64_bit_sound_string";
 const Slang = () => {
-    
+    const { theme } = React.useContext(ThemeContext);
     return (
         // <ThemeProvider attribute="class">
-        <Container maxWidth="lg" className=" my-2 dark:bg-black dark:text-white bg-white text-black">
+        <div className={`${theme} lg:container lg:mx-auto lg:w-3/4  my-2 dark:bg-black dark:text-white bg-white text-black m-0`}>
             <div className="grid place-items-center">
-                <h3 className="text-2xl text-center">Slang Word Definition</h3>
-                <FetchApi/>
-                
+                <h3 className="text-2xl text-center dark:bg-black dark:text-white">Slang Word Definition</h3>
+                <FetchApi />
+
             </div>
-        </Container>
+        </div>
         // </ThemeProvider>
     )
 }

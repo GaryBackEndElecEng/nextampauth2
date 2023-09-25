@@ -11,6 +11,7 @@ import { signIn, signOut } from "next-auth/react";
 import Image from "next/image";
 import { Inter, Montserrat, Chela_One } from 'next/font/google';
 import httpUrl from "@component/context/httpUrl";
+import { ThemeContext } from '../context/ThemeContext';
 
 
 const chela = Chela_One({ weight: "400", subsets: ["latin"] });
@@ -23,6 +24,7 @@ type mainAllpostsType = {
 }
 
 const All_Posts = ({ imgSrc, getAccount }: mainAllpostsType) => {
+    const { theme } = React.useContext(ThemeContext);
     const url = httpUrl();
     const { setIsSignin, session, genMsg, setGenMsg, msg, setMsg, userId, setUserId, setAccount, allPosts, setPage } = React.useContext(GeneralContext);
 
@@ -45,7 +47,7 @@ const All_Posts = ({ imgSrc, getAccount }: mainAllpostsType) => {
 
     return (
         <GeneralProviderNoAccount>
-            <div className={`${chela.className} flex flex-col justify-center items-center w-full dark:bg-black dark:text-white text-site_blue_dark bg-orange md:bg-[whitesmoke]`}>
+            <div className={`${chela.className} ${theme} flex flex-col justify-center items-center w-full dark:bg-black dark:text-white text-site_blue_dark bg-orange md:bg-[whitesmoke]`}>
                 <div className="flex flex-col  justify-center items-center gap-3">
                     {imgSrc && <Image src={imgSrc} height={75} width={75} alt="www.masterconnect.ca" className="rounded-[50%]" />}
                     <div className="text-center text-5xl my-5">Free Community Board</div>

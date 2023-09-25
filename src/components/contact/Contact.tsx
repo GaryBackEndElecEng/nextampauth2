@@ -11,6 +11,7 @@ import UploadCV from './UploadCV';
 import Image from 'next/image';
 import WeChooseUs from './WeChooseUs';
 import { GeneralContext } from '../context/GeneralContextProvider';
+import { ThemeContext } from '../context/ThemeContext';
 
 type generalInfoType = {
   id: number,
@@ -30,7 +31,7 @@ type mediaLinkType = {
 }
 
 const Contact = () => {
-
+  const { theme } = React.useContext(ThemeContext);
   const [open, setOpen] = React.useState<boolean>(false);
   const staticImage = process.env.NEXT_PUBLIC_aws;
   const webService = `${staticImage}/webService.png`;
@@ -65,7 +66,7 @@ const Contact = () => {
   return (
     <GeneralProviderNoAccount>
       {/* <ThemeProvider attribute="class"> */}
-      <Container maxWidth="xl" className="mx-0 dark:bg-black dark:text-white bg-white text-black mt-1 lg:mx-auto lg:container" >
+      <Container maxWidth="xl" className={`${theme} mx-0 dark:bg-black dark:text-white bg-white text-black mt-1 lg:mx-auto lg:container `} >
 
 
         <Grid container spacing={{ md: 3, sm: 0 }}>

@@ -201,3 +201,21 @@ export type deleteType = {
   adminuser?: string,
   adminemail?: string
 }
+export type useUploadType = {
+  url: string,
+  file: File | undefined,
+  userId: string | null,
+
+}
+export type mainGetSignup = {
+  id: number;
+  name: string | null;
+  email: string | null;
+  date: Date | string;
+}
+export type mainPageHit = {
+  id: number;
+  page: string | null;
+  count: number | null;
+  date: Date | string;
+}

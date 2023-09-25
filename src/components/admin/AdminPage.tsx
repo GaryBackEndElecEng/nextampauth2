@@ -7,8 +7,10 @@ import { redirect } from "next/navigation";
 // import {getCsrfToken} from "next-auth/react";
 import type { userType, msgType, adminType } from "@component/context/type";
 import { GeneralContext } from "@component/context/GeneralContextProvider";
+import { ThemeContext } from '../context/ThemeContext';
 
 const AdminPage = () => {
+    const { theme } = React.useContext(ThemeContext);
     const { data: session, status } = useSession();
     const { allUsers, setAllUsers } = React.useContext(GeneralContext);
     const adminemail = process.env.NEXT_PUBLIC_adminemail;
@@ -63,7 +65,7 @@ const AdminPage = () => {
     if (status === "authenticated" && check) {
         if (session) {
             return (
-                <div className="lg:container lg:mx-auto w-full mt-20 mx-0 px-1">
+                <div className={`${theme} dark:text-white text-black lg:container lg:mx-auto w-full mt-20 mx-0 px-1`}>
 
                     <MainAdmin session={session} />
                 </div>

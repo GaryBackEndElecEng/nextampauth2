@@ -92,3 +92,7 @@ model PageHit {
   count Int?
   date  DateTime @default(now()) @db.Date
 }
+
+model ColorSheme {
+  color String @unique
+}

@@ -6,6 +6,7 @@ import type { userType, msgType, userAccountType, registerType } from "@componen
 import { GeneralContext } from "@component/context/GeneralContextProvider";
 import httpUrl from '@component/context/httpUrl';
 import { ArrowFunction, FunctionDeclaration } from 'typescript';
+import Link from 'next/link';
 
 type mainRegisterType = {
     genHash: (pswd: string) => Promise<string>
@@ -96,68 +97,75 @@ const Register = ({ genHash }: mainRegisterType) => {
 
 
     return (
-        <div>
-            <div className="flex flex-col  w-full  justify-center w-sm py-12 lg:px-8 border border-black rounded-lg bg-black text-white">
-                <div className="sm:mx-auto px-8 sm:max-w-sm">
-                    <Image width={155} height={155} src={logo} alt="www" className="mx-auto h-10 w-auto shadow-lg shadow-blue rounded-full" />
-                    <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-grey-900">Register</h2>
-                    <h3 className="mt-5 text-center text-xl font-bold leading-9 tracking-tight text-grey-900">Thank you for being with us</h3>
 
+        <div className="flex flex-col w-full sm:max-w-md  justify-center  py-12 lg:px-8 border border-black rounded-lg bg-black text-white">
+            <div className="sm:mx-auto px-8 sm:max-w-sm">
+                <Image width={155} height={155} src={logo} alt="www" className="mx-auto h-10 w-auto shadow-lg shadow-blue rounded-full" />
+                <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-grey-900">Register</h2>
+                <h3 className="mt-5 text-center text-xl font-bold leading-9 tracking-tight text-grey-900">Thank you for being with us</h3>
+
+            </div>
+            {msg && !msg.loaded ?
+                <div className="flex flex-col px-1 my-1 max-w-xs ">
+                    <p className=" text-center text-red px-1 text-xs">{msg && msg.msg}</p>
                 </div>
-                {msg && !msg.loaded ?
-                    <div className="flex flex-col px-1 my-1 max-w-xs ">
-                        <p className=" text-center text-red px-1 text-xs">{msg && msg.msg}</p>
+                :
+                <div className="flex flex-col px-auto my-3 min-w-sm ">
+                    <p className="text-lg text-center text-blue">{msg && msg.msg}</p>
+                </div>
+            }
+            <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+                <form onSubmit={(e) => registerUser(e)} className="w-full flex flex-col items-center  p-3 rounded-lg bg-slate_blue text-white shadow-md shadow-slate_blue text-lg gap-2" >
+
+                    <label htmlFor="name" className="block text-sm font-medium leading-6">name</label>
+
+                    <input type="text" className="mt-2 shadow shadow-blue bg-white text-black rounded-lg w-full px-3"
+                        name="name"
+                        id="name"
+                        value={data && data.name ? data.name : ""}
+                        onChange={(e) => setData({ ...data, name: e.target.value })}
+                        required
+
+                    />
+
+                    <label htmlFor="email" className="block text-sm font-medium leading-6">email</label>
+
+                    <input type="text" className="mt-2 shadow shadow-blue bg-white text-black rounded-lg  w-full px-3"
+                        name="email"
+                        id="email"
+                        value={data && data.email ? data.email : ""}
+                        onChange={(e) => setData({ ...data, email: e.target.value })}
+                        required
+
+                    />
+
+                    <label htmlFor="password" className="block text-sm font-medium leading-6">password</label>
+
+                    <input className="mt-2 shadow shadow-blue bg-white text-black rounded-lg  w-full px-3"
+                        name="password"
+                        type={showPass ? "text" : "password"}
+                        value={pswd}
+                        required
+                        onChange={(e) => setPswd(e.target.value)}
+
+                    />
+                    <button className="text-center text-white bg-blue shadow-md shadow-blue rounded-md hover:text-leading-3 my-3 mb-3" onClick={changePasswd}>show pswd</button>
+
+
+                    <div className="flex flex-col items-center">
+                        <button type="submit" className="flex flex-col w-full justify-center rounded-md bg-indigo-600 px-4 py-1 5 text-sm font-bold text-center shadow-md shadow-white">submit</button>
                     </div>
-                    :
-                    <div className="flex flex-col px-auto my-3 min-w-sm ">
-                        <p className="text-lg text-center text-blue">{msg && msg.msg}</p>
-                    </div>
-                }
-                <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                    <form onSubmit={(e) => registerUser(e)} className="w-full flex flex-col items-center  p-3 rounded-lg bg-slate_blue text-white shadow-md shadow-slate_blue" >
-
-                        <label htmlFor="name" className="block text-sm font-medium leading-6">name</label>
-
-                        <input type="text" className="mt-2 shadow shadow-blue bg-white text-black rounded-lg"
-                            name="name"
-                            id="name"
-                            value={data && data.name ? data.name : ""}
-                            onChange={(e) => setData({ ...data, name: e.target.value })}
-                            required
-
-                        />
-
-                        <label htmlFor="email" className="block text-sm font-medium leading-6">email</label>
-
-                        <input type="text" className="mt-2 shadow shadow-blue bg-white text-black rounded-lg"
-                            name="email"
-                            id="email"
-                            value={data && data.email ? data.email : ""}
-                            onChange={(e) => setData({ ...data, email: e.target.value })}
-                            required
-
-                        />
-
-                        <label htmlFor="password" className="block text-sm font-medium leading-6">password</label>
-
-                        <input className="mt-2 shadow shadow-blue bg-white text-black rounded-lg"
-                            name="password"
-                            type={showPass ? "text" : "password"}
-                            value={pswd}
-                            required
-                            onChange={(e) => setPswd(e.target.value)}
-
-                        />
-                        <button className="text-center text-white bg-blue shadow-md shadow-blue rounded-md hover:text-leading-3 my-3" onClick={changePasswd}>show pswd</button>
-
-
-                        <div className="flex flex-col items-center">
-                            <button type="submit" className="flex flex-col w-full justify-center rounded-md bg-indigo-600 px-4 py-1 5 text-sm font-bold text-center shadow-md shadow-white">submit</button>
-                        </div>
-                    </form>
+                </form>
+                <div className="flex flex-col items-center justify-end mt-5">
+                    <Link href={"/api/auth/signin"}
+                        className="m-auto text-center mt-3 dark:bg-white bg-blue text-black dark:text-white shadow-md shadow-white border border-white rounded-full px-3"
+                    >
+                        signin
+                    </Link>
                 </div>
             </div>
         </div>
+
     )
 }
 

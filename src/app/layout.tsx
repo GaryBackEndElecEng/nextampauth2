@@ -4,11 +4,11 @@ import "@home/home.css";
 import "@ultils/translate/translate.css";
 import { Inter, Montserrat, Chela_One } from 'next/font/google';
 import NewNav from '../components/nav/NewNav';
-import Header from "../components/header/Header";
+import HeaderMain from "../components/header/HeaderMain";
 import Footer from "../components/footer/Footer";
 import GeneralContextProvider from "@component/context/GeneralContextProvider";
+import ThemeContextProvider from "@component/context/ThemeContext";
 import Providers from "./providers";
-// import Head from 'next/head';
 
 
 
@@ -114,7 +114,7 @@ export const metadata = {
     ],
   },
 
-  
+
 }
 
 
@@ -125,18 +125,20 @@ export default function RootLayout({
 }) {
   return (
 
-    <html lang="en" >
-      <body className={`${montserr.className} h-auto m-0 relative bg-[rgba(255,255,255,0.7)] text-black `} style={{ width: "100vw" }}>
-      
+    <html lang="en" className="light" >
+      <body className={`${montserr.className} h-auto m-0 relative light:bg-[rgba(255,255,255,0.7)] text-black dark:bg-black`} style={{ width: "100vw" }}>
+
         <Providers>
-        <GeneralContextProvider>
-        <NewNav />
-        <Header />
-        {children}
-        </GeneralContextProvider>
+          <GeneralContextProvider>
+            <ThemeContextProvider>
+              <NewNav />
+              <HeaderMain />
+              {children}
+            </ThemeContextProvider>
+          </GeneralContextProvider>
         </Providers>
         <Footer />
-     
+
       </body>
 
     </html>

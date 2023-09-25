@@ -120,7 +120,7 @@ const AllSubPosts = ({ userId, chela }: mainDisplayType) => {
                             }
                         </div>
                         {post.imageKey &&
-                            <Image src={post.imageKey} alt="www.masterconnect.ca" height={300} width={300} className="aspect-video" />
+                            <Image src={post.imageKey} alt="www.masterconnect.ca" height={400} width={400} className="aspect-video" />
                         }
                         <div className="lg:mx-auto py-3 mx-0 text-green" >published:{post.published ? "true" : "false"}</div>
                         <div className="mx-auto p-3 text-xl inline-flex" >

@@ -8,6 +8,7 @@ import Image from "next/image";
 import styles from './contact.module.css';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
+import { ThemeContext } from '../context/ThemeContext';
 
 
 
@@ -20,6 +21,7 @@ type openContentType = {
     index: number | null
 }
 const WeChooseUs = ({ open }: weChooseType) => {
+    const { theme } = React.useContext(ThemeContext);
     const { whyChooseUs } = React.useContext(GeneralContextNoAcc);
     const url: string | undefined = process.env.NEXT_PUBLIC_serverApi;
     const [openContent, setOpenContent] = React.useState<openContentType>({ bool: false, index: null });
@@ -35,7 +37,7 @@ const WeChooseUs = ({ open }: weChooseType) => {
 
 
     return (
-        <Container maxWidth="xl">
+        <Container maxWidth="xl" className={`${theme} bg-white dark:bg-black text-black dark:text-white`}>
             <div className={`${open ? `grid ${styles.whatWeDo}` : "hidden "}  m-0 grid-cols-1 md:grid-cols-2 gap-2 auto-rows-auto  opacity-100`}>
                 {whyChooseUs ?
                     whyChooseUs.map((obj, index) => (
@@ -43,11 +45,11 @@ const WeChooseUs = ({ open }: weChooseType) => {
                         >
                             <div className="m-auto flex lg:flex-row flex-col flex-wrap items-center justify-center gap-4 my-1 p-1">
                                 <Image src={obj.image} height={200} width={200} alt="www.masterconnect.ca"
-                                className="rounded-[50%] shadow-lg shadow-blue dark:shadow-white"
+                                    className="rounded-[50%] shadow-lg shadow-blue dark:shadow-white"
                                 />
                                 <h3 className="text-3xl text-center mx-auto text-blue mb-2">{obj.title}</h3>
                             </div>
-                            
+
                             <h5 className="text-lg mt-3 mb-1">summary</h5>
                             <h6 className="text-3md indent-3 whitespace-normal px-1 lg:px-3">{obj.summary}</h6>
                             <div className="flex flex-col items-center justify-center">

@@ -9,6 +9,8 @@ import { GeneralContext } from "@component/context/GeneralContextProvider";
 import DeleteUser from "./DeleteUser";
 import AdminAnswers from "./AdminAnswers";
 import Image from 'next/image';
+import Link from "next/link";
+import { ThemeContext } from '../context/ThemeContext';
 
 type mainAdminType = {
   session: Session,
@@ -30,7 +32,12 @@ const MainAdmin = ({ session }: mainAdminType) => {
 
 
   return (
-    <div className="p-10 flex flex-col justify-center items-center gap-3 w-full">
+    <div className={` p-10 flex flex-col justify-center items-center gap-3 w-full dark:bg-black dark:text-white`}>
+      <Link href={"/admin/signup-pagehits"}
+        className="shadow-md shadow-blue rounded-full border border-blue px-3 "
+      >
+        <h3 className="text-lg text-center">Signups&pageHits</h3>
+      </Link>
       <h2 className="text-lg text-center font-bold">Main Client Admin</h2>
       <h2 className="text-md text-center">{session?.user?.name}</h2>
       <h2 className="text-md text-center">{session?.user?.email}</h2>

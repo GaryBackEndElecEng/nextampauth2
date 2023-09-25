@@ -5,6 +5,7 @@ import Image from "next/image";
 import DialogPopUp from './DialogPopUp';
 import getGamesAPI from './getGamesAPI';
 import { GeneralContext } from '@/components/context/GeneralContextProvider';
+import { ThemeContext } from '@/components/context/ThemeContext';
 
 type screenShotType = {
     id: number,
@@ -45,6 +46,7 @@ type GameType = {
 }
 
 const GetGames = () => {
+    const { theme } = React.useContext(ThemeContext);
     const { setPage } = React.useContext(GeneralContext);
     const [games, setGames] = React.useState<GameType[] | null>(null)
     const [show, setShow] = React.useState<{ loaded: boolean, game: GameType | null }>({ loaded: false, game: null });
@@ -79,8 +81,8 @@ const GetGames = () => {
 
     }
     return (
-        // <ThemeProvider attribute="class">
-        <main className="mx-auto lg:container  my-2 dark:bg-black dark:text-white bg-white text-black ">
+
+        <main className={`${theme} mx-auto lg:container my-2 dark:bg-black dark:text-white bg-white text-black `}>
             <section className="m-1 relative rounded-md grid grid-cols-1 gap-1 sm:grid-cols-2 lg:grid-cols-4 m-0 grid-flow-row-dense justify-items-center justify-center">
                 {games && games.map((game, index) => (
                     <div key={`${game.id}--${index}`}>
@@ -113,7 +115,7 @@ const GetGames = () => {
             </section>
 
         </main>
-        // </ThemeProvider>
+
     )
 }
 

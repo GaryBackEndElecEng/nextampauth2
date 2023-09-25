@@ -88,6 +88,7 @@ const GeneralContextProvider = (props: any) => {
     }
     fetchUserInfo()
   }, []);
+
   React.useEffect(() => {
     const recordHit = async () => {
       const options = {
@@ -99,7 +100,7 @@ const GeneralContextProvider = (props: any) => {
       }
       const res = await fetch(`/api/page-hit`, options);
       if (!res.ok) {
-        console.log(await res.json());
+
         const body: { message: string } = await res.json()
         setPageInfo(body.message)
       }

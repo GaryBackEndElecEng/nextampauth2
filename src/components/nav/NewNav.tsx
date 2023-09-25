@@ -9,6 +9,7 @@ import styles from "@component/header/header.module.css";
 import { GeneralContext } from '../context/GeneralContextProvider';
 import ListIcon from '@mui/icons-material/List';
 import { IconButton } from "@mui/material";
+import { ThemeContext } from '../context/ThemeContext';
 
 
 
@@ -55,6 +56,7 @@ export const navLinkHome: navType = [
 
 
 const NewNav = () => {
+    const { theme } = React.useContext(ThemeContext);
     const router = useRouter();
     const { setSignup } = React.useContext(GeneralContext);
     const URL = process.env.NEXT_PUBLIC_aws;
@@ -81,7 +83,7 @@ const NewNav = () => {
     return (
 
 
-        <nav className="mainNav top-0 left-0 right-0 lg:bg-blue lg:w-full min-h-[100px] relative ">
+        <nav className={`${theme} mainNav top-0 left-0 right-0 dark:lg:bg-black lg:bg-blue lg:w-full min-h-[100px] relative `}>
 
 
             <main className="subMainNav  lg:flex  lg:flex-row lg:justify-around lg:items-center lg:gap-10 relative ">
@@ -96,7 +98,7 @@ const NewNav = () => {
 
                 </section>
                 <section className={"mainLinkgroup basis-4/5 lg:block w-full"}>
-                    <div className="subNavLinkgroup flex lg:flex-row justify-around gap-4 sm:gap-4 lg:gap-1 lg:w-full items-center bg-black lg:bg-blue ">
+                    <div className="subNavLinkgroup flex lg:flex-row justify-around gap-4 sm:gap-4 lg:gap-1 lg:w-full items-center lg:bg-blue  ">
 
                         <div className=" text-center cursor-pointer shadow hover:shadow-lg hover:shadow-white shadow-white px-3 my-2  " onClick={(e) => handleLink(e, home?.link)}>
                             <h3 className="text-white font-bold sm:text-xl">home</h3>

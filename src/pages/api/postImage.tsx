@@ -36,17 +36,16 @@ export default async function handle(request: NextRequest, res: NextApiResponse)
         const file: File | null = formdata.get("file") as unknown as File;
         const getKey: string | null = formdata.get("name") as unknown as string;
         if (!file) {
-            return res.status(404).json({ error: "file doesn't exist" })
+            return res.status(404).json({ message: "file doesn't exist" })
         }
         const bytes = await file.arrayBuffer();
         const buffer = Buffer.from(bytes);
-        // const reSizeBuffer=await sharp(buffer).resize({width:600,height:700}).toBuffer()
-
+        // const reSizeBuffer = await sharp(buffer).resize({ width: 600, height: 400 }).toBuffer()
         const getPath = "../../../public/images" + `/${file.name}.png`;
 
         // console.log("NAME",file.name);
         if (!(buffer || file.name || getKey)) {
-            NextResponse.json({ error: "no file name" })
+            NextResponse.json({ message: "no file name" })
         }
 
         const params = {
@@ -58,7 +57,13 @@ export default async function handle(request: NextRequest, res: NextApiResponse)
 
         const command = new PutObjectCommand(params);
         const result = await s3.send(command);
-        NextResponse.json({ success: `${true}-${result.$metadata.httpStatusCode}` })
+
+        if (result.$metadata.httpStatusCode === 200) {
+            NextResponse.json({ message: "success" })
+        } else {
+            NextResponse.json({ message: "failed" })
+        }
+
     }
 
 
