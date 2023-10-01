@@ -158,7 +158,7 @@ const Register = ({ genHash }: mainRegisterType) => {
                 </form>
                 <div className="flex flex-col items-center justify-end mt-5">
                     <Link href={"/api/auth/signin"}
-                        className="m-auto text-center mt-3 dark:bg-white bg-blue text-black dark:text-white shadow-md shadow-white border border-white rounded-full px-3"
+                        className="m-auto text-center mt-3 dark:bg-white bg-blue text-white dark:text-white shadow-md shadow-white border border-white rounded-full px-3"
                     >
                         signin
                     </Link>

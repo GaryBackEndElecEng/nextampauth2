@@ -56,7 +56,7 @@ const DetailPost = ({ user, post }: detailPostType) => {
                                 {post.date && convertDate(post.date)}
                             </small>
                         </div>
-                        <div className="flex flex-row gap-2 items-center">
+                        <div className="flex flex-row gap-2 items-center p-2 border border-blue-600 drop-shadow drop-shadow-slate-600 rounded-lg items-center justify-center">
                             {post.answers && post.answers.length &&
                                 post.answers.map((ans, index) => (
                                     <div className="m-auto flex flex-col items-center justify-center gap-1" key={index}>

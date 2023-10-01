@@ -69,6 +69,7 @@ const NewNav = () => {
     const extra = navLinkExtras?.find(obj => (obj.name === "extra")) || undefined;
     const articles = navLinkHome?.find(obj => (obj.name === "articles")) || undefined;
     const contact = navLinkHome?.find(obj => (obj.name === "contact")) || undefined;
+    const posts: string = "/posts"
 
 
     const handleLink = (e: MouseEvent, link: string | undefined) => {
@@ -122,6 +123,10 @@ const NewNav = () => {
                         <NavButton
                             onClick={(e) => handleLink(e, contact?.link)}>
                             contact
+                        </NavButton>
+                        <NavButton
+                            onClick={(e) => handleLink(e, posts)}>
+                            posts
                         </NavButton>
 
                         <NavButton onClick={() => setSignup(true)}>signup</NavButton>

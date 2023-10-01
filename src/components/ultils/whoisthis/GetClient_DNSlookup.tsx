@@ -3,6 +3,7 @@ import React, { MouseEvent } from 'react'
 import getDNSlookup, { dnslookupType } from "./getDNSlookup";
 import { FormHelperText, FormControl, Input } from '@mui/material';
 import GetDNSresults from "./GetDNSresults";
+import Button from "@component/component/Button";
 
 
 const GetClient_DNSlookup = () => {
@@ -55,8 +56,8 @@ const GetClient_DNSlookup = () => {
           }
         </FormControl>
         <div className="flex flex-col justify-center items-center ">
-          <button className="text-center text-md p-2 px-4 rounded-lg border border-black shadow-lg shadow-blue hover:bg-blue hover:tracking-wide hover:shadow-xl bg-site_blue_dark text-white" onClick={(e) => handleDNS(e)}>Submit</button>
-          {dns && <button className="text-center mt-2 text-md p-2 px-4 rounded-lg border border-black shadow-lg shadow-blue hover:bg-blue hover:tracking-wide hover:shadow-xl bg-site_blue_dark text-white" onClick={() => handleReset()}>reset</button>}
+          <Button onClick={(e) => handleDNS(e)}>Submit</Button>
+          {dns && <Button onClick={() => handleReset()}>reset</Button>}
         </div>
       </div>
 

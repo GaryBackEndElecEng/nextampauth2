@@ -15,7 +15,7 @@ const HomeHeader = () => {
             <div className="h-[3px] w-full my-2 bg-[var(--background-image-2)]" style={{ background: "var(--background-image-2)" }} />
             <div className="flex flex-col justify-center align-center relative p-1 my-2">
 
-                <div className="sm:mx-auto m-0 w-300 flex flex-col  gap-2 p-2 border border-blue dark:border-white rounded-lg shadow-lg dark:shadow-white shadow-primary-700">
+                <div className="sm:mx-auto m-0 w-300 flex flex-col sm:flex-row items-center justify-evenly gap-2 p-2 border border-blue dark:border-white rounded-lg sm:rounded-xl shadow-lg dark:shadow-white shadow-primary-700">
 
                     <Image src={logo} width={85} height={85} alt="www.masterconnect.ca"
                         className=" mx-auto "

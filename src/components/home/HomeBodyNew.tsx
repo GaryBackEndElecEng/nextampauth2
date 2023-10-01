@@ -3,7 +3,6 @@ import React, { MouseEvent } from 'react';
 // import { ThemeProvider } from 'next-themes';
 import Image from "next/image";
 import HomeAnchor from "./HomeAnchor";
-import ViewArticCont from './ViewArticCont';
 import { GeneralProviderNoAccount } from "@context/GeneralContext";
 import { GeneralContext } from "@context/GeneralContextProvider";
 import AllNavFeed from './AllNavFeed';
@@ -36,7 +35,7 @@ const HomeBodyNew = () => {
             <GeneralProviderNoAccount>
                 {/* <ThemeProvider attribute="class"> */}
                 <HomeHeader />
-                <ViewArticCont />
+
                 <main className=" my-1 dark:bg-slate-900 dark:text-white text-black bg-[whitesmoke] prose-md">
                     <AllNavFeed />
                 </main>
