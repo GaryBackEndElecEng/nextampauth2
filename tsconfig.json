@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -19,20 +23,61 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@component/*":["./src/components/*"],
-      "@posts/*":["./src/components/posts/*"],
-      "@_prisma/*":["./prisma/*"],
-      "@api/*":["./src/pages/api/*"],
-      "@context/*":["./src/components/context/*"],
-      "@nav/*":["./src/components/nav/*"],
-      "@home/*":["./src/components/home/*"],
-      "@ultils/*":["./src/components/ultils/*"],
-      "@games/*":["./src/components/games/*"],
-      "@graphql/*":["./src/graphql/*"],
-      
+      "@/*": [
+        "./src/*"
+      ],
+      "@component/*": [
+        "./src/components/*"
+      ],
+      "@posts/*": [
+        "./src/components/posts/*"
+      ],
+      "@_prisma/*": [
+        "./prisma/*"
+      ],
+      "@api/*": [
+        "./src/pages/api/*"
+      ],
+      "@context/*": [
+        "./src/components/context/*"
+      ],
+      "@nav/*": [
+        "./src/components/nav/*"
+      ],
+      "@home/*": [
+        "./src/components/home/*"
+      ],
+      "@ultils/*": [
+        "./src/components/ultils/*"
+      ],
+      "@games/*": [
+        "./src/components/games/*"
+      ],
+      "@graphql/*": [
+        "./src/graphql/*"
+      ],
+      "@climate/*": [
+        "./src/components/climate/*"
+      ],
+      "@_mdx/*": [
+        "./src/components/mdx/*"
+      ],
+      "@lib/*": [
+        "./src/lib/*"
+      ],
+      "@blogs/*": [
+        "./src/blogs/*"
+      ],
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/app/climate/test/test.mdx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

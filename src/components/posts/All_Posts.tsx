@@ -47,7 +47,7 @@ const All_Posts = ({ imgSrc, getAccount }: mainAllpostsType) => {
 
     return (
         <GeneralProviderNoAccount>
-            <div className={`${chela.className} ${theme} flex flex-col justify-center items-center w-full dark:bg-black dark:text-white text-site_blue_dark bg-orange md:bg-[whitesmoke]`}>
+            <div className={`${chela.className} ${theme} flex flex-col justify-center items-center w-full dark:bg-black dark:text-white text-site_blue_dark bg-orange md:bg-[whitesmoke] mt-10 sm:mt-2 md:mt-0`}>
                 <div className="flex flex-col  justify-center items-center gap-3">
                     {imgSrc && <Image src={imgSrc} height={75} width={75} alt="www.masterconnect.ca" className="rounded-[50%]" />}
                     <div className="text-center text-5xl my-5">Free Community Board</div>

@@ -24,31 +24,31 @@ const ViewArticCont = () => {
         route.push("/posts");
     }
     return (
-        <div className="lg:container lg:mx-auto my-1 dark:bg-black dark:text-white text-black bg-[rgba(255,255,255,0.6)] mb-4 pb-5 pt-5" >
+        <div className="lg:container lg:mx-auto m-0 dark:bg-slate-900 dark:text-white text-black bg-[whitesmoke] mb-0 pb-5 pt-5" >
             <div className="flex flex-row justify-around flex-wrap gap-3">
                 <IconButton className="m-auto flex flex-col justify-center items-center  cursor-pointer"
                     onClick={(e) => handleArticles(e)}
                 >
                     <Image src={article} width={125} height={125} alt="ww.masterconnect.ca"
-                        className="m-auto  shadow-lg rounded-[50%] shadow-blue dark:text-white text-black border border-blue "
+                        className="m-auto  shadow-lg rounded-[50%] shadow-primary-700 dark:text-white text-black border border-primary-700 "
                     />
 
                 </IconButton>
                 <IconButton className="m-auto flex flex-col justify-center items-center  cursor-pointer"
                     onClick={(e) => handleDesigns(e)}
                 >
-                    <Image src={desImg} width={125} height={125} alt="www.masterconnect.ca" className="m-auto shadow-lg rounded-full px-1 shadow-lg shadow-blue dark:text-white text-black border border-blue " />
+                    <Image src={desImg} width={125} height={125} alt="www.masterconnect.ca" className="m-auto shadow-lg rounded-full px-1 shadow-lg shadow-blue-700 dark:text-white text-black border border-blue " />
 
                 </IconButton>
-                <IconButton className="m-auto flex flex-col justify-center items-center shadow-lg rounded-[50%]  cursor-pointer"
+                <IconButton className=" button m-auto flex flex-col justify-center items-center shadow-lg   cursor-pointer shadow-lg shadow-blue-300"
                     onClick={(e) => handlePosts(e)}
                 >
                     <Image src={posts} width={145} height={145} alt="www.masterconnect.ca"
-                        className="m-auto  shadow-lg rounded-[50%] shadow-blue dark:text-white text-black border border-blue "
+                        className="m-auto  shadow-lg rounded-[50%] dark:text-white text-black "
                     />
 
                 </IconButton>
-                <IconButton className="m-auto flex flex-col justify-center items-center shadow-lg rounded-full p-1 px-3 shadow-blue dark:text-white text-black border border-blue font-bold cursor-pointer"
+                <IconButton className="m-auto flex flex-col justify-center items-center shadow-lg rounded-full p-1 px-3 shadow-secondary-500 text-black border border-secondary-500 font-bold cursor-pointer dark:text-white"
                     onClick={(e) => handleContact(e)}
                 >
                     <h3 className="text-2xl pt-2">get to</h3>

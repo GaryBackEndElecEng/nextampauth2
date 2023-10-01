@@ -6,17 +6,26 @@ import { countryPrep, topTenWorld } from "./ultils";
 import dynamic from "next/dynamic";
 import { PopulationContext } from "@/components/context/GeneralContext";
 import countries from "./countryJSON.json";
+const CountryChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 //The below is needed to prevent the code from rendering before window.dom has been installed or noticed
-const CountryChart = dynamic(() => import("react-apexcharts"), { ssr: false ,loading:()=><h3 className="text-red text-4xl text-center">loading</h3>});
+
 
 
 
 
 
 const CountryGraph = () => {
-  const [chartOptions, setChartOptions] = React.useState<object>({});
-  const [groupseries, setGroupSeries] = React.useState<seriesType>([]);
-  const { } = React.useContext(PopulationContext);
+  const [chartOptions, setChartOptions] = React.useState<object | undefined>(undefined);
+  const [groupseries, setGroupSeries] = React.useState<seriesType | undefined>(undefined);
+  const { setWorldLoaded, loaded } = React.useContext(PopulationContext);
+
+  React.useEffect(() => {
+    if (groupseries && chartOptions) {
+      setWorldLoaded(true)
+    } else {
+      setWorldLoaded(false)
+    }
+  }, [chartOptions, groupseries, setWorldLoaded]);
 
   React.useMemo(() => {
     const plotOptions: plotOptionsType = {
@@ -52,20 +61,26 @@ const CountryGraph = () => {
 
 
   return (
-    <div className={`w-full lg:w-3/4 lg:mx-auto lg:container bg-[whitesmoke] text-black shadow-lg shadow-blue rounded-lg relative`}  >
-      <CountryChart options={chartOptions} series={groupseries} type={"bar"} />
-      <div className={`absolute right-0 top-0 shadow-lg shadow-blue rounded-lg bg-black text-white z-1000 border border-[white] flex flex-col gap-2`}>
-        <small className="text-md text-center w-full">TOP 5</small>
-        {topTenWorld(countries).length > 0 &&
-          topTenWorld(countries).map((co, index) => (
-            <div className="m-auto flex flex-row items-center justify-start gap-1 p-1 border-b border-[white]" key={co.id}>
-              <small className="m-auto text-xs text-blue">{co.id}</small>
-              <small className="m-auto text-xs">{co.name}</small>
-              <small className="m-auto text-xs">{co.pop}</small>
-            </div>
-          ))
-        }
-      </div>
+    <div className={`w-full lg:mx-auto lg:container bg-[whitesmoke] text-black shadow-lg shadow-blue rounded-lg relative`}  >
+      {loaded &&
+        <React.Fragment>
+          <CountryChart options={chartOptions} series={groupseries} type={"bar"} width={"100%"} height={600} />
+          <div className={`absolute right-0 top-0 shadow-lg shadow-blue rounded-lg bg-black text-white z-1000 border border-[white] flex flex-col gap-2`}>
+            <small className="text-md text-center w-full">TOP 5</small>
+
+            {topTenWorld(countries).length > 0 && loaded &&
+              topTenWorld(countries).map((co, index) => (
+                <div className="m-auto flex flex-row items-center justify-start gap-1 p-1 border-b border-[white]" key={co.id}>
+                  <small className="m-auto text-xs text-blue">{co.id}</small>
+                  <small className="m-auto text-xs">{co.name}</small>
+                  <small className="m-auto text-xs">{co.pop}</small>
+                </div>
+              ))
+            }
+
+          </div>
+        </React.Fragment>
+      }
     </div>
   )
 }

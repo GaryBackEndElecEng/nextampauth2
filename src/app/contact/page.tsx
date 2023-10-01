@@ -10,7 +10,7 @@ export const metadata: Metadata = metacontact;
 const contact = () => {
 
   return (
-    <div className="bg-[whitesmoke] w-full m-0">
+    <div className="bg-[whitesmoke] w-full mx-0 w-full mb-4 lg:mb-0">
       <Contact />
     </div>
   )

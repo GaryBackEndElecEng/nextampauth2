@@ -1,9 +1,6 @@
-/*
-    nav.mainNav => 
-    main.subMainNav =>
-    mainLinkgroup => 
-    subNavLinkgroup > div ( elements ) 
-    */
+:root {
+  --slate-blue: "#355691";
+}
 
 @property --angle-rotate {
   syntax: "<angle>";
@@ -13,6 +10,7 @@
 main.subMainNav {
   margin-inline: 5px;
   margin-right: 20px;
+  max-height: 8vh;
 }
 section.combineButtons_hidelarge {
   display: none;
@@ -28,6 +26,9 @@ section.combineButtons_hidelarge {
     background: transparent;
     position: sticky;
     z-index: 200;
+    height: 2vh;
+    z-index: 1;
+    top: 1rem;
     /* background:hsla(137, 91%, 50%, 0.3) */
   }
 
@@ -41,14 +42,13 @@ section.combineButtons_hidelarge {
     position: relative;
     margin-inline: auto;
     margin-right: auto;
+    top: -26px;
+    /* background-color: var(--slate-blue); */
   }
   main.subMainNav > section.logoContainer {
-    width: 100%;
-    margin: auto;
+    width: 10%;
+    margin: 5px;
     position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
   section.combineButtons {
     display: none;
@@ -62,6 +62,7 @@ section.combineButtons_hidelarge {
 
   main.subMainNav > section.mainLinkgroup {
     position: absolute;
+    /* background: var(--slate-blue); */
     opacity: 0;
     left: 0;
     top: 90px;
@@ -72,6 +73,7 @@ section.combineButtons_hidelarge {
   main.subMainNav:hover > section.mainLinkgroup {
     opacity: 1;
     transform: translateX(20%);
+    background: inherit;
     transition: all 0.75s ease-in-out;
   }
   main.subMainNav > section {
@@ -132,10 +134,11 @@ section.combineButtons_hidelarge {
     transition: all 0.75s ease-in-out;
   }
   div.subNavLinkgroup {
-    display: block;
     box-shadow: 1px 1px 10px 2px #508991;
     width: fit-content;
-    transform: translate(-20%);
+    transform: translate(-50%, -10%);
+    background: transparent;
+    padding-inline: 1rem;
   }
   div.subNavLinkgroup > ul {
     box-shadow: 1px 1px 10px 2px #508991;
@@ -173,11 +176,15 @@ section.combineButtons_hidelarge {
     max-height: 100px;
     z-index: 1;
   }
+  main.subMainNav > section.logoContainer {
+    top: 0px;
+  }
 
   div.subNavLinkgroup {
-    display: block;
     box-shadow: 1px 1px 10px 2px #508991;
     width: fit-content;
-    transform: translate(-35%);
+    transform: translate(-30%, -20%);
+    background: transparent;
+    padding-inline: 5px;
   }
 }

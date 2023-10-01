@@ -57,7 +57,7 @@ const GetDetail = () => {
     }, [id, setMsg, setUser, userInfos, setPost]);
 
     return (
-        <div className="lg:mx-auto lg:container w-max-md">
+        <div className="lg:mx-auto lg:container w-max-md mt-16 sm:mt-12 lg:mt-0">
             <DetailPost
                 post={post}
                 user={user}

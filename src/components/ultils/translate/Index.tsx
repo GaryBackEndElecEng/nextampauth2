@@ -69,7 +69,7 @@ const Index = () => {
 
     return (
         <Container maxWidth="lg" className=" translateContainer px-1 mt-10 flex flex-col items-center min-h-[100vh] bg-white text-black dark:bg-black dark:text-white my-2 p-2 rounded-lg">
-            <h1 className="text-5xl text-center mx-auto my-1 mb-2"> Translate page</h1>
+            <h1 className="text-5xl text-center mx-auto my-1 mb-2 mt-16 sm:mt-12 lg:mt-2"> Translate page</h1>
             <div className="flex flex-row flex-wrap mx-auto justify-center items-center p-2 mx-3 gap-3 w-full lg:w-1/2  my-10 rounded-lg shadow-xl shadow-indigo-800">
 
                 <h2 className="text-xl m-auto text-center font-bold" >languages:</h2>

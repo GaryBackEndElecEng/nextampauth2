@@ -61,10 +61,10 @@ const MainChart = () => {
 
     return (
         // <ThemeProvider attribute="class">
-        <div className="mx-0 my-2 w-full lg:mx-auto lg:container dark:bg-black dark:text-white bg-white text-black "
+        <div className="mx-0 my-2 w-full lg:mx-auto lg:container dark:bg-black dark:text-white bg-white text-black mt-5 bg-slate-400 "
         >
-            <div className={graphData ? `grid grid-cols-1 auto-cols-auto grid-flow-row-dense justify-items-center justify-center lg:grid-cols-3 gap-2` : "flex flex-col justify-center items-center  w-full"}>
-                <div className={graphData ? "card w-full col-span-1 " : "card w-full lg:w-1/2"}>
+            <div className={graphData ? `grid grid-cols-1 auto-cols-auto grid-flow-row-dense justify-items-center justify-center lg:grid-cols-3 gap-2` : "flex flex-col justify-center items-center  w-full mx-0"}>
+                <div className={graphData ? "card w-full col-span-1 " : "card w-full mx-0 lg:mx-auto lg:w-1/2"}>
                     <DataInput
                         setGraphData={setGraphData}
                         graphData={graphData}

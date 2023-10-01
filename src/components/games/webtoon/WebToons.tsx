@@ -25,9 +25,9 @@ const WebToons = () => {
   }
   return (
     <Container maxWidth="xl" className="my-2  dark:text-white dark:bg-black bg-white text-black">
-      <div className="flex flex-col m-auto justify-center items-center lg:my-40 ">
+      <div className="flex flex-col m-auto justify-center items-center lg:my-40  ">
         <Grid container spacing={{ xs: 3, sm: 2 }} className="my-2  ">
-          <Grid item xs={12} md={3} className="relative flexCol font-bold  overflow-hidden">
+          <Grid item xs={12} md={3} className="relative flexCol font-bold  overflow-hidden" sx={{ marginTop: { xs: "5rem", sm: "4rem", md: "0rem" } }}>
             <Image src={webtoon1} alt="www.masterconnect.ca" height={450} width={450}
               className="absolute inset-0 aspect-video w-full "
             />

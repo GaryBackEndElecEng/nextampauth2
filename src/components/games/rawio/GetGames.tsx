@@ -82,8 +82,8 @@ const GetGames = () => {
     }
     return (
 
-        <main className={`${theme} mx-auto lg:container my-2 dark:bg-black dark:text-white bg-white text-black `}>
-            <section className="m-1 relative rounded-md grid grid-cols-1 gap-1 sm:grid-cols-2 lg:grid-cols-4 m-0 grid-flow-row-dense justify-items-center justify-center">
+        <main className={`${theme} mx-auto lg:container my-2 mt-16 lg:mt-0 dark:bg-black dark:text-white bg-white text-black `}>
+            <section className="m-1 relative rounded-md grid grid-cols-1 gap-1 sm:grid-cols-2 lg:grid-cols-4 m-0 grid-flow-row-dense justify-items-center justify-center dark:bg-black dark:text-white">
                 {games && games.map((game, index) => (
                     <div key={`${game.id}--${index}`}>
                         <div className="m-auto auto-cols-auto p-1" key={`${game.id}--${index}`}>

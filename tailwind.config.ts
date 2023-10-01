@@ -8,30 +8,31 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    colors: {
-      "red":"#FF0000",
-      'blue': '#1fb6ff',
-      'pink': '#ff49db',
-      'orange': '#ff7849',
-      'green': '#13ce66',
-      'gray-dark': '#273444',
-      'gray': '#8492a6',
-      "white":"rgb(255,255,255)",
-      'gray-light': '#d3dce6',
-      'site_blue_light':"#74B3CE",
-      "site_blue_grey":"#508991",
-      "site_blue_dark":"#172A3A",
-      "site_green_dark":"#004346",
-      "site_mint":"#09BC8A",
-      "black":"#2B2118",
-      "slate_blue":"#355691",
-      "light_marron":"#DB324D",
-      "lime_green":"#8AE9C1",
-      "sky_blue":"#91A6FF",
-      "medium-black":"rgba(0,0,0,0.5)"
-
-    },
     extend: {
+      colors:{
+        primary: {
+          100: "#b2d8d8",
+          200: "#66b2b2",
+          300: "#74B3CE",
+          400: "#ee7600",
+          500: "#d56900",
+          600: "#008080",
+          700: "#a25000",
+          800: "#004c4c",
+          900: "#172A3A",
+        },
+        secondary: {
+          100: "##ff9c3c",
+          200: "#ff9022",
+          300: "#ff8308",
+          400: "#ee7600",
+          500: "#d56900",
+          600: "#bb5d00",
+          700: "#a25000",
+          800: "#5f2f00",
+          900: "#472300",
+        },
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
@@ -58,6 +59,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 }
 export default config

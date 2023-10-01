@@ -20,6 +20,7 @@ const techtool = `${masterImage}/techtool.png`;
 const post = `${staticImage}/images/study.png`;
 const countries = `https://new-master.s3.ca-central-1.amazonaws.com/static/book.png`;
 const scrape = `${masterImage}/scrape.png`;
+const temp = `https://new-master.s3.ca-central-1.amazonaws.com/static/climateChange/firePic.png`
 
 export const allNavLinks: navImageLinkType[] = [
   { id: 1, icon: <ExploreIcon sx={{ color: "red", ml: 1, mr: 1, fontSize: "130%" }} />, name: "Custom Charts", image: graph, link: "/extra/chart", desc: [{ para: " Generate your Multiple custom graph for your project. The display graph is an image so you can copy the image from the template." }, { para: " Your Custom image comes with a custom intro, title and footer reference." }, { para: " Bar(s) or Line(s)." }] },
@@ -36,5 +37,6 @@ export const allNavLinks: navImageLinkType[] = [
   { id: 12, icon: <InfoIcon sx={{ color: "red", ml: 1, mr: 1, fontSize: "130%" }} />, name: "Tech Tools", image: techtool, link: "/ultils/techtool", desc: [{ para: "This allows you to verify emails,DNS lookups and domain verification and much more." }] },
 
   { id: 14, icon: <ExploreIcon sx={{ color: "red", ml: 1, mr: 1, fontSize: "130%" }} />, name: "Community Comments", image: post, link: "/posts", desc: [{ para: " see Community posts and comments. let us know what you need or drop a comment governing any respectable thought." }, { para: " We check our posts every day and follow through with requests. so let us know your thoughts." }], },
+  { id: 15, icon: <ExploreIcon sx={{ color: "red", ml: 1, mr: 1, fontSize: "130%" }} />, name: "Global warming Dynamic temperature Graph", image: temp, link: "/climate/temp", desc: [{ para: " Global Warming" }, { para: " Visual interactive display of Global warming and its effect." }], },
 
 ]

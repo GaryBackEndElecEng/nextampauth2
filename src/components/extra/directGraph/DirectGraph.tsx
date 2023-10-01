@@ -54,7 +54,7 @@ const DirectGraph = () => {
     // <ThemeProvider attribute="class">
     <Container maxWidth="xl" className="bg-white text-black dark:bg-black dark:text-white ">
       <div className="flex flex-col justify-center items-center">
-        <h3 className="text-center text-5xl mx-auto container my-3 mt-4 pt-2">make your own flow chart</h3>
+        <h3 className="text-center text-5xl mx-auto container my-3 mt-20 lg:mt-10 pt-2">make your own flow chart</h3>
         <Image src={development} width={300} height={200} alt="www.masterconnect.ca" />
       </div>
       <Grid container spacing={{ xs: 2, sm: 0, md: 3 }} className="lg:min-h-[60vh]">

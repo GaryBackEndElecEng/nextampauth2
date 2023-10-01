@@ -2,7 +2,6 @@
 import React, { MouseEvent } from 'react';
 // import { ThemeProvider } from 'next-themes';
 import Image from "next/image";
-// import "./home.css"
 import HomeAnchor from "./HomeAnchor";
 import ViewArticCont from './ViewArticCont';
 import { GeneralProviderNoAccount } from "@context/GeneralContext";
@@ -33,12 +32,12 @@ const HomeBodyNew = () => {
 
 
     return (
-        <div className={theme}>
+        <div className={`${theme} topMasterHome dark:bg-slate-900 bg-slate-200 dark:text-white text-black  w-full sm:m-0`} style={{ padding: 0 }}>
             <GeneralProviderNoAccount>
                 {/* <ThemeProvider attribute="class"> */}
                 <HomeHeader />
                 <ViewArticCont />
-                <main className="lg:container lg:mx-auto my-1 dark:bg-black dark:text-white text-black bg-[rgba(255,255,255,0.6)]">
+                <main className=" my-1 dark:bg-slate-900 dark:text-white text-black bg-[whitesmoke] prose-md">
                     <AllNavFeed />
                 </main>
 

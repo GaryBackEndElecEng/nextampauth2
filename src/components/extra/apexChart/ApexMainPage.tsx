@@ -2,7 +2,7 @@
 
 import React, { MouseEvent } from 'react';
 import { seriesType, barType, xaxisType, lineStrokeType, graphType_type, legendType } from './types';
-import {GeneralApexChart} from "@/components/context/GeneralContext";
+import { GeneralApexChart } from "@/components/context/GeneralContext";
 import SeriesInput from "./SeriesInput";
 import XaxisInput from "./XaxisInput";
 import ChartCreator from "./ChartCreator";
@@ -19,8 +19,8 @@ type plotOptions = {
 
 
 const ApexMainPage = () => {
-  const {groupSeries, setGroupSeries,serie, setSerie,xaxis, setXAxis,xaxisInput, setXaxisInput,legend, setLegend,Bar, setBar,lineStroke, setLineStroke,msgX, setMsgX,msg_S, setMsg_S,nameS, setNameS,addSeriesCount, setAddSeriesCount,refresh, setRefresh,show, setShow,graphType, setGraphType}=React.useContext(GeneralApexChart);
-  
+  const { groupSeries, setGroupSeries, serie, setSerie, xaxis, setXAxis, xaxisInput, setXaxisInput, legend, setLegend, Bar, setBar, lineStroke, setLineStroke, msgX, setMsgX, msg_S, setMsg_S, nameS, setNameS, addSeriesCount, setAddSeriesCount, refresh, setRefresh, show, setShow, graphType, setGraphType } = React.useContext(GeneralApexChart);
+
   const typeArr = ["line", "bar"]
 
   var count = 1;
@@ -74,7 +74,7 @@ const ApexMainPage = () => {
 
 
   return (
-    <div className="flex flex-col items-center justify-start my-1 mx-0 lg:mx-auto lg:container gap-2 w-full bg-black text-white " >
+    <div className="flex flex-col items-center justify-start my-1 mx-0 lg:mx-auto lg:container gap-2 w-full bg-black text-white mt-8 " >
       <div className="grid grid-cols-1 lg:grid-cols-4 place-items-center mx-0 lg:mx-auto lg:gap-2 gap-y-1 border-2 w-full ">
         <div className="col-span-3 m-auto shadow-lg shadow-blue w-full">
           {!show ?
@@ -95,9 +95,9 @@ const ApexMainPage = () => {
             />}
         </div>
         <div className="col-span-1 m-auto shadow-lg shadow-blue w-full">
-          <XaxisInput/>
+          <XaxisInput />
 
-          <SeriesInput/>
+          <SeriesInput />
 
           <div className="lg:mx-auto lg:container text-lg text-center w-full  " >
             <SelectGraphType

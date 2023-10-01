@@ -9,9 +9,9 @@ const Slang = () => {
     const { theme } = React.useContext(ThemeContext);
     return (
         // <ThemeProvider attribute="class">
-        <div className={`${theme} lg:container lg:mx-auto lg:w-3/4  my-2 dark:bg-black dark:text-white bg-white text-black m-0`}>
+        <div className={`${theme} lg:container lg:mx-auto lg:w-3/4  my-2 dark:bg-black dark:text-white bg-white text-black m-0 mt-20 sm:mt-16`}>
             <div className="grid place-items-center">
-                <h3 className="text-2xl text-center dark:bg-black dark:text-white">Slang Word Definition</h3>
+                <h3 className="text-2xl text-center dark:bg-black dark:text-white px-1 sm:px-4">Slang Word Definition</h3>
                 <FetchApi />
 
             </div>

@@ -15,7 +15,15 @@ import countries from "./countryJSON.json";
 const EuroGraph = () => {
   const [chartOptions, setChartOptions] = React.useState<object>({});
   const [groupseries, setGroupSeries] = React.useState<seriesType>([]);
-  const { } = React.useContext(PopulationContext);
+  const { setEurLoaded, loaded } = React.useContext(PopulationContext);
+
+  React.useEffect(() => {
+    if (groupseries && chartOptions) {
+      setEurLoaded(true)
+    } else {
+      setEurLoaded(false)
+    }
+  }, [chartOptions, groupseries, setEurLoaded]);
 
 
   React.useMemo(() => {
@@ -52,20 +60,26 @@ const EuroGraph = () => {
 
 
   return (
-    <div className="w-full lg:w-3/4 lg:mx-auto lg:container bg-[whitesmoke] text-black shadow-lg shadow-blue rounded-lg relative"  >
-      <CountryChart options={chartOptions} series={groupseries} type={"bar"} />
-      <div className="absolute  right-0 top-0 shadow-lg shadow-blue rounded-lg bg-black text-white z-1000 border border-[white] flex flex-col gap-1 ">
-        <small className="text-md text-center w-full">TOP 5</small>
-        {topTenEuro(countries).length > 0 &&
-          topTenEuro(countries).map((co, index) => (
-            <div className="m-auto flex flex-row items-center justify-start gap-1 p-1 border-b border-[white]" key={co.id}>
-              <small className="m-auto text-xs text-blue">{co.id}</small>
-              <small className="m-auto text-xs">{co.name}</small>
-              <small className="m-auto text-xs">{co.pop}</small>
-            </div>
-          ))
-        }
-      </div>
+    <div className="w-full lg:mx-auto lg:container bg-slate-300 text-black shadow-lg shadow-blue rounded-lg relative"  >
+      {loaded ?
+        <React.Fragment>
+          <CountryChart options={chartOptions} series={groupseries} type={"bar"} width={"100%"} height={600} />
+          <div className="absolute  right-0 top-0 shadow-lg shadow-blue rounded-lg bg-black text-white z-1000 border border-[white] flex flex-col gap-1 ">
+            <small className="text-md text-center w-full">TOP 5</small>
+            {topTenEuro(countries).length > 0 && loaded &&
+              topTenEuro(countries).map((co, index) => (
+                <div className="m-auto flex flex-row items-center justify-start gap-1 p-1 border-b border-[white]" key={co.id}>
+                  <small className="m-auto text-xs text-blue">{co.id}</small>
+                  <small className="m-auto text-xs">{co.name}</small>
+                  <small className="m-auto text-xs">{co.pop}</small>
+                </div>
+              ))
+            }
+          </div>
+        </React.Fragment>
+        :
+        <h3 className="text-center text-4xl font-bold p-10">loading Europe</h3>
+      }
     </div>
   )
 }

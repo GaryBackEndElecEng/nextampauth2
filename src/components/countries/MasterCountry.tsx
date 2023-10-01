@@ -43,7 +43,7 @@ const MasterCountry = () => {
 
     return (
         <div className="lg:mx-auto lg:container p-3  ">
-            <div className="flex flex-col items-center justify-center">
+            <div className="flex flex-col items-center justify-center mt-3 sm:mt-2">
                 <h3 className="text-center text-2xl my-2 text-black dark:text-white">Search a country</h3>
                 <FormControl className="text-black bg-white dark:text-black m-auto dark:bg-white shadow-lg dark:shadow-white shadow-blue rounded-lg">
                     <Input

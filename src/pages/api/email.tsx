@@ -16,7 +16,7 @@ const generateText = (name: string, email: string) => {
     <p>email: masterultils@gmail.com</p>`
     )
 }
-const generateHTML = (name: string, email: string) => {
+export const generateHTML = (name: string, email: string) => {
     return (
         `<!DOCTYPE html>
         <html lang="en">

@@ -12,6 +12,8 @@ import Image from 'next/image';
 import WeChooseUs from './WeChooseUs';
 import { GeneralContext } from '../context/GeneralContextProvider';
 import { ThemeContext } from '../context/ThemeContext';
+import Button from "@component/component/Button";
+
 
 type generalInfoType = {
   id: number,
@@ -66,10 +68,13 @@ const Contact = () => {
   return (
     <GeneralProviderNoAccount>
       {/* <ThemeProvider attribute="class"> */}
-      <Container maxWidth="xl" className={`${theme} mx-0 dark:bg-black dark:text-white bg-white text-black mt-1 lg:mx-auto lg:container `} >
+      <Container maxWidth="xl" className={`${theme} mx-0 dark:bg-black dark:text-white bg-white text-black mt-1 lg:mx-auto lg:container  `} >
 
 
-        <Grid container spacing={{ md: 3, sm: 0 }}>
+
+        <Grid container spacing={{ md: 3, sm: 0 }}
+          sx={{ marginTop: { sm: "4.5rem", xs: "5rem", md: "0rem" } }}
+        >
           <Grid
             item xs={12} sm={6} md={6}
             className={styles.childGrid}
@@ -89,20 +94,18 @@ const Contact = () => {
 
           {!open ?
 
-            <button
+            <Button
               onClick={(e) => handleProject(e)}
-              className="shadow-lg shadow-blue hover:shadow-site_blue_dark border border-blue bg-site_mint hover:bg-black px-6 rounded-3xl hover:tracking-widest transition-all py-2 "
+
             >
               <h6 className="text-lg text-white">what we do</h6>
-            </button>
+            </Button>
             :
-            <button
+            <Button
               onClick={(e) => handleProject(e)}
-              className="shadow-lg shadow-site_blue_dark border border-white bg-black 
-           hover:border-blue hover:bg-site_mint px-6 rounded-3xl py-2 hover:tracking-widest transition-all"
             >
               <h6 className="text-lg text-white">hide</h6>
-            </button>
+            </Button>
           }
 
           <WeChooseUs open={open} />

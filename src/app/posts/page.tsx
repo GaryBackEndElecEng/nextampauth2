@@ -22,7 +22,7 @@ export default async function Posts() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center mt-12 ">
 
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center mt-6 sm:mt-4 md:mt-0">
 
         <div className="flex flex-row flex-wrap gap-5 items-center justify-center my-3 mx-auto">
           <div className="flex flex-col items-center justify-center gap-2">

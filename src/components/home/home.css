@@ -1,11 +1,24 @@
-*{padding:0;box-sizing:border-box;margin:0;}
-
-
-div.card >p.webDesign{
-    font-size:220%;
-    transition: all 0.75s ease-in-out;
+* {
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
 }
-div.card:hover >p.webDesign{
-    font-size:226%;
-    transition: all 0.75s ease-in-out;
+
+div.card > p.webDesign {
+  font-size: 220%;
+  transition: all 0.75s ease-in-out;
+}
+div.card:hover > p.webDesign {
+  font-size: 226%;
+  transition: all 0.75s ease-in-out;
+}
+@media screen and (max-width: 920px) {
+  .topMasterHome {
+    margin-top: 4rem;
+  }
+}
+@media screen and (max-width: 420px) {
+  .topMasterHome {
+    margin-top: 4.5rem;
+  }
 }

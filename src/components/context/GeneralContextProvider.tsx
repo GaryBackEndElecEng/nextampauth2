@@ -38,6 +38,8 @@ type generalContextType = {
   setPage: React.Dispatch<React.SetStateAction<string | undefined>>,
   page: string | undefined,
   pageInfo: string | undefined,
+  setClose: React.Dispatch<React.SetStateAction<boolean>>,
+  close: boolean
 }
 export const GeneralContext = React.createContext<generalContextType>({} as generalContextType);
 
@@ -58,7 +60,8 @@ const GeneralContextProvider = (props: any) => {
   const [signUpEmail, setSignUpEmail] = React.useState<{ email: string | undefined, name: string | undefined }>({ name: "", email: "" });
   const [signup, setSignup] = React.useState<boolean>(false);
   const [page, setPage] = React.useState<string | undefined>("");
-  const [pageInfo, setPageInfo] = React.useState<string | undefined>("")
+  const [pageInfo, setPageInfo] = React.useState<string | undefined>("");
+  const [close, setClose] = React.useState<boolean>(false);
 
   React.useMemo(async () => {
     try {
@@ -113,7 +116,7 @@ const GeneralContextProvider = (props: any) => {
   }, [page]);
 
   return (
-    <GeneralContext.Provider value={{ account, setAccount, allPosts, setAllPosts, signin, setSignin, isSignin, setIsSignin, session, status, msg, setMsg, users, setUsers, allUsers, setAllUsers, genMsg, setGenMsg, userId, setUserId, allAnswers, setAllAnswers, userInfos, setUserInfos, signUpEmail, setSignUpEmail, signup, setSignup, setPage, page, pageInfo }}>
+    <GeneralContext.Provider value={{ account, setAccount, allPosts, setAllPosts, signin, setSignin, isSignin, setIsSignin, session, status, msg, setMsg, users, setUsers, allUsers, setAllUsers, genMsg, setGenMsg, userId, setUserId, allAnswers, setAllAnswers, userInfos, setUserInfos, signUpEmail, setSignUpEmail, signup, setSignup, setPage, page, pageInfo, setClose, close }}>
       {props.children}
     </GeneralContext.Provider>
   )

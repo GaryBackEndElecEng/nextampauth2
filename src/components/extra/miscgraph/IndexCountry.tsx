@@ -6,11 +6,12 @@ import AsiaGraph from "./AsiaGraph";
 import NAGraph from "./NAGraph";
 import SAGraph from "./SAGraph";
 import AfricaGraph from "./AfricaGraph";
-import { PopulationContextProvider } from "@/components/context/GeneralContext";
+import { PopulationContext, PopulationContextProvider } from "@/components/context/GeneralContext";
 import { GeneralContext } from "@component/context/GeneralContextProvider";
 
 const IndexCountry = () => {
   const { setPage } = React.useContext(GeneralContext);
+  const { loaded } = React.useContext(PopulationContext);
 
   React.useEffect(() => {
     setPage("/miscgraph")
@@ -18,12 +19,14 @@ const IndexCountry = () => {
 
   return (
     <PopulationContextProvider>
-      <CountryGraph />
-      <EuroGraph />
-      <AsiaGraph />
-      <NAGraph />
-      <SAGraph />
-      <AfricaGraph />
+      <div className={`min-h-[20vh] w-full m-0 p-0`}>
+        <CountryGraph />
+        <EuroGraph />
+        <AsiaGraph />
+        <NAGraph />
+        <SAGraph />
+        <AfricaGraph />
+      </div>
     </PopulationContextProvider>
   )
 }

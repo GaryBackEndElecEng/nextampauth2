@@ -9,7 +9,9 @@ import Footer from "../components/footer/Footer";
 import GeneralContextProvider from "@component/context/GeneralContextProvider";
 import ThemeContextProvider from "@component/context/ThemeContext";
 import Providers from "./providers";
-
+import Signup from "@component/emails/SignUp";
+import MDXComponents from "@component/component/MDXComponents";
+// import MDXProvider from "@mdx-js/react";
 
 
 //font-family classes-Inter and montserrat Google Fonts
@@ -125,16 +127,25 @@ export default function RootLayout({
 }) {
   return (
 
-    <html lang="en" className="light" >
-      <body className={`${montserr.className} h-auto m-0 relative light:bg-[rgba(255,255,255,0.7)] text-black dark:bg-black`} style={{ width: "100vw" }}>
+    <html lang="en" className="light w-full bg-slate-400" >
+      <body className={`${montserr.className} h-auto m-0 relative light:bg-[whitesmoke] text-black dark:text-white dark:bg-slate-900 bg-slate-400 w-full `} style={{ width: "100vw" }}>
 
         <Providers>
           <GeneralContextProvider>
+
             <ThemeContextProvider>
+
+
+
               <NewNav />
               <HeaderMain />
-              {children}
+              <div className="w-full dark:bg-slate-900 dark:text-white lg:max-w-4xl lg:mx-auto p-0   bg-slate-100  m-0 ">
+
+                {children}
+                <Signup />
+              </div>
             </ThemeContextProvider>
+
           </GeneralContextProvider>
         </Providers>
         <Footer />

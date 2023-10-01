@@ -1,12 +1,54 @@
+.headerMain {
+  z-index: 1;
+  height: 20vh;
+  margin-bottom: 0rem;
+}
+
 .masterHeader {
   width: 100vw;
-  height: 40vh;
+  z-index: 1;
+  inset: 0;
+  height: inherit;
   background-position: 50% 50%;
-  background-size: 100% 100%;
+  background-size: 100% 300%;
   margin-bottom: 0rem;
   border-radius: 0%;
   position: relative;
+  animation: openMaster1 2s ease-in;
 }
+.masterHeaderSignup {
+  opacity: 1;
+  width: 100vw;
+  background: var(--slate-blue);
+  height: 40vh;
+  z-index: 1000;
+  animation: openMaster 2s ease-in;
+}
+@keyframes openMaster {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+    height: 1vh;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+    height: 40vh;
+  }
+}
+@keyframes openMaster {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+    height: 1vh;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+    height: 30vh;
+  }
+}
+
 .masterHeader h2 {
   animation: moveIn 10s ease-in-out infinite;
   animation-delay: 2s;
@@ -30,21 +72,51 @@
   }
 }
 @media screen and (max-width: 920px) {
+  .headerMain {
+    margin-top: -6rem;
+  }
   .masterHeader {
     width: 100vw;
-    height: 60vh;
+    top: 6rem;
+    height: inherit;
     background-position: 44% 20%;
-    background-size: 140% 150%;
-    margin-bottom: -6rem;
-    border-radius: 0%;
+    background-size: 100% 200%;
+    margin-bottom: 1rem;
+    padding: 5px;
     position: relative;
     transform: translateY(-14%);
+    animation: growIn 2.5s ease-in-out;
+  }
+  .masterHeaderSignup {
+    width: 100vw;
+    background: grey;
+    max-height: 40vh;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    top: -0rem;
+    transition: margin-bottom 2s ease-in;
+    z-index: 1000;
+    animation: openMaster 2s ease-in;
+  }
+  @keyframes growIn {
+    from {
+      opacity: 0;
+      background-position: 200% 200%;
+      background-size: 200% 250%;
+    }
+    to {
+      opacity: 1;
+      background-position: 44% 20%;
+      background-size: 100% 150%;
+    }
   }
 }
 @media screen and (max-width: 400px) {
   .masterHeader {
-    margin-bottom: -6.5rem;
-    transform: translateY(-26%);
+    top: 4rem;
+    max-height: 20vh;
+    margin-bottom: 1rem;
+    transform: translateY(5%);
   }
 }
 /* -----SIGNUP------------- */
@@ -53,6 +125,7 @@
   opacity: 1;
 }
 .hide {
+  display: none;
   opacity: 0;
   animation: moveOut 1.5s ease-out;
 }
@@ -62,12 +135,13 @@
   position: absolute;
   right: 12.5%;
   top: 17%;
+  z-index: 3000;
 }
 @media screen and (max-width: 920px) {
   .signUp {
     position: absolute;
     left: 33%;
-    top: 14%;
+    top: 25%;
     width: 300px;
   }
   .hide {
@@ -78,12 +152,16 @@
   }
   @keyframes moveOut {
     from {
+      display: block;
       transform: translateX(33%);
       opacity: 1;
     }
-    to {
+    80% {
       transform: translateX(133%);
       opacity: 0;
+    }
+    to {
+      display: none;
     }
   }
 }
@@ -119,5 +197,51 @@
   to {
     transform: translateX(100%);
     opacity: 0;
+  }
+}
+/* WELCOME---------- */
+.welcomeShow {
+  display: block;
+  opacity: 1;
+  transform: translateX(0%);
+  transition: all 2s ease-in-out;
+}
+.welcomeHide {
+  display: none;
+  opacity: 0;
+  transform: translateX(200%);
+  animation: translateClose 2s ease-in-out;
+}
+@keyframes translateClose {
+  from {
+    tranform: translateX(0%);
+    opacity: 1;
+    display: block;
+  }
+  80% {
+    tranform: translateX(200%);
+    opacity: 0;
+  }
+  to {
+    display: none;
+  }
+}
+/* -------COLOR BTN------ */
+.colorBtn {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  z-index: 1000;
+}
+@media screen and (max-width: 920px) {
+  .colorBtn {
+    top: 80%;
+    right: 0%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .colorBtn {
+    top: 70%;
+    right: 0%;
   }
 }

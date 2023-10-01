@@ -10,6 +10,7 @@ import { GeneralContext } from '../context/GeneralContextProvider';
 import ListIcon from '@mui/icons-material/List';
 import { IconButton } from "@mui/material";
 import { ThemeContext } from '../context/ThemeContext';
+import NavButton from "@component/component/NavButton";
 
 
 
@@ -83,13 +84,14 @@ const NewNav = () => {
     return (
 
 
-        <nav className={`${theme} mainNav top-0 left-0 right-0 dark:lg:bg-black lg:bg-blue lg:w-full min-h-[100px] relative `}>
+        <nav className={`${theme} mainNav bg-transparent dark:lg:bg-black lg:bg-blue-200 dark:text-white lg:w-full `}>
 
 
-            <main className="subMainNav  lg:flex  lg:flex-row lg:justify-around lg:items-center lg:gap-10 relative ">
-                <section className="logoContainer  m-auto relative rounded-full lg:basis-1/5 ">
+            <main className="subMainNav  lg:flex  lg:flex-row lg:justify-around lg:items-center lg:gap-10 relative !prose-invert " style={{ zIndex: 0 }}>
+                <section className="logoContainer  m-auto relative rounded-full lg:basis-1/5 w-[5%]">
                     <IconButton sx={{ display: { xs: "none", md: "block" } }}>
-                        <Image src={logo} alt="www.masterconnect.ca" height={75} width={75}
+                        <Image src={logo} alt="www.masterconnect.ca" height={45} width={45}
+                            className="rounded-full shadow shadow-blue-800"
                         />
                     </IconButton>
                     <IconButton
@@ -101,26 +103,30 @@ const NewNav = () => {
 
                 </section>
                 <section className={"mainLinkgroup basis-4/5 lg:block w-full"}>
-                    <div className="subNavLinkgroup flex lg:flex-row justify-around gap-4 sm:gap-4 lg:gap-1 lg:w-full items-center lg:bg-blue  ">
+                    <div className="subNavLinkgroup flex flex-col  lg:flex-row justify-around gap-2 sm:gap-4 lg:gap-1 lg:w-full items-center lg:bg-blue dark:text-white text-black  ">
 
-                        <div className=" text-center cursor-pointer shadow hover:shadow-lg hover:shadow-white shadow-white px-3 my-2  " onClick={(e) => handleLink(e, home?.link)}>
-                            <h3 className="text-white font-bold sm:text-xl">home</h3>
-                        </div>
-                        <div className=" text-center cursor-pointer shadow hover:shadow-lg hover:shadow-white shadow-white px-3 my-2  " onClick={(e) => handleLink(e, design)}>
-                            <h3 className="text-white font-bold sm:text-xl">Designs</h3>
-                        </div>
+                        <NavButton
+                            onClick={(e) => handleLink(e, home?.link)}>
+                            home
+                        </NavButton>
+                        <NavButton
+                            onClick={(e) => handleLink(e, design)}>
+                            Designs
+                        </NavButton>
 
-                        <div className=" text-center cursor-pointer shadow shadow-white px-3 hover:shadow-lg hover:shadow-white my-2 " onClick={(e) => handleLink(e, articles?.link)}>
-                            <h3 className="text-white font-bold sm:text-xl">articles</h3>
-                        </div>
+                        <NavButton
+                            onClick={(e) => handleLink(e, articles?.link)}>
+                            articles
+                        </NavButton>
 
-                        <div className=" text-center cursor-pointer shadow shadow-white px-3 hover:shadow-lg hover:shadow-white my-2 " onClick={(e) => handleLink(e, contact?.link)}>
-                            <h3 className="text-white font-bold sm:text-xl">contact</h3>
-                        </div>
-                        <div className="relative ">
-                            <button className=" shadow shadow-orange border border-orange rounded-full px-3  bg-orange text-white" onClick={() => setSignup(true)}>signup</button>
+                        <NavButton
+                            onClick={(e) => handleLink(e, contact?.link)}>
+                            contact
+                        </NavButton>
 
-                        </div>
+                        <NavButton onClick={() => setSignup(true)}>signup</NavButton>
+
+
 
 
                     </div>

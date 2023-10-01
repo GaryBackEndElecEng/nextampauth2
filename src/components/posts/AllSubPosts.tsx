@@ -103,13 +103,17 @@ const AllSubPosts = ({ userId, chela }: mainDisplayType) => {
                     <div key={`${post.id}-${index}-`}
                         className="flex flex-col items-center"
                     >
-                        {getPic() && <Image src={getPic() as string} alt="www.masterconnect.ca" width={65} height={65} className="rounded-[50%] shadow-md shadow-blue p-2 aspect-[1/1]" blurDataURL={getPic() as string} />}
+                        <div className={`flex flex-row flex-wrap mx-auto justify-between gap-2 w-full ${userId && post.userId === userId ? " cursor-pointer" : ""}`} onClick={(e) => routeToDashboard(e, post.userId)}>
+                            {getPic() && <Image src={getPic() as string} alt="www.masterconnect.ca" width={35} height={25} className="rounded-full shadow-md shadow-blue" blurDataURL={getPic() as string} />}
+                            <div className={`${userId === post.userId ? "text-blue-500 text-underline" : " text-black"} mx-auto px-3 py-auto text-md shadow-md rounded-md shadow-blue-500 flex items-center gap-2`} >
+                                <span className="text-md font-bold">{userInfo(post.userId)}</span>
+                                <span className="text-sm font-bold text-blue-700">{post.title}</span>
+                            </div>
+                        </div>
+
                         <div className={`flex flex-row flex-wrap mx-auto items-center  ${userId && post.userId === userId ? " cursor-pointer" : ""}`} onClick={(e) => routeToDashboard(e, post.userId)}>
 
-                            <div className={`${userId === post.userId ? "text-blue-500 text-underline" : " text-black"} mx-auto p-3 text-2xl shadow-md rounded-md shadow-blue-500`} >
-                                {userInfo(post.userId)}
-                                {post.title}
-                            </div>
+
                             <button className="px-3 bg-blue m-3 border border-orange shadow shadow-blue rounded-full"
                                 onClick={() => {
                                     router.push(

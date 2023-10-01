@@ -8,14 +8,14 @@ const HomeHeader = () => {
     const logo = `${URL}/logoLarge.png`;
 
     return (
-        <div className=" homeHeader my-0 mx-0  lg:mx-auto text-black dark:text-white bg-[whitesmoke] dark:bg-black pb-4 relative">
+        <div className=" homeHeader my-0 mx-0  lg:mx-auto text-black dark:text-white bg-[whitesmoke] dark:bg-slate-900 pb-4 relative">
 
-            <p className="free text-6xl text-center mx-auto whitespace-normal mt-2 py-2">Free Resources,  from:
+            <p className="free text-6xl text-center mx-auto whitespace-normal mt-2 py-2">Free Resources, from:
             </p>
             <div className="h-[3px] w-full my-2 bg-[var(--background-image-2)]" style={{ background: "var(--background-image-2)" }} />
             <div className="flex flex-col justify-center align-center relative p-1 my-2">
 
-                <div className="m-auto w-300 flex flex-col  gap-2 p-2 border border-blue dark:border-white rounded-lg shadow-lg dark:shadow-white shadow-blue dark:bg-site_blue_dark bg-light_marron">
+                <div className="sm:mx-auto m-0 w-300 flex flex-col  gap-2 p-2 border border-blue dark:border-white rounded-lg shadow-lg dark:shadow-white shadow-primary-700">
 
                     <Image src={logo} width={85} height={85} alt="www.masterconnect.ca"
                         className=" mx-auto "
